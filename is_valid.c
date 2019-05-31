@@ -33,14 +33,11 @@ int kol_resh(char **line) //функция чекает количество # �
             if (line[i][j] == '#')
                 k++;
             i++;
-        }printf("kol\n");
+        }
         if (line[0][j] == '\n')
         {
             if (k != 4)
-                {
-                    write(1, "kol", 3);
-                    return (2);
-                }
+                return (2);
             k = 0;
         }
         j++;
