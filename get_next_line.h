@@ -20,5 +20,10 @@
 
 int		get_next_line(int const fd, char **line);
 int		ft_str_fd(char **str, char **line, int fd, int ret);
+int touch(char **line);
+int is_valid(char **line);
+int len_n_hei(char **line);
+int nal_n(char **line);
+int kol_resh(char **line);
 
 #endif
