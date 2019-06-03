@@ -19,11 +19,16 @@
 
 # define BUF_SIZE 1
 
-int get_char(int fd, char **line)
+char get_figure(int fd)
 {
-    if (fd < 0 || line == NULL || (read(fd, NULL, 0) < 0))
-		return (-1);
-        while ()
+    char c[20];
+    int n;
+    
+    if (fd < 0 || (read(fd, NULL, 0) < 0))
+		return (0);
+    if (!(n = read(fd, c, 20)))
+        return (0);
+    return (c);
 }
 
 int ft_error(int r)
@@ -33,23 +38,58 @@ int ft_error(int r)
     exit(0);
 }
 
+
+int isNeighbor(char **figa, int x, int y)
+{
+
+}
+int isValid(int fd)
+{
+
+    char c;
+    char bc;
+    int nb;
+
+    nb = 0;
+    while ((c = get_char(fd)))
+    {
+        if (!ft_strchr(".#\n", c))
+            return (0);
+        if (c == '\n')
+        {
+            if (c == bc)
+            {
+                if (nb != 16)
+                    return (0);
+                nb = 0;
+            }
+        }
+        else
+            nb++;
+        bc = c;
+    }
+    
+    return (1);
+}
+
 int main(int ac, char **av)
 {
     int fd;
-    char *line;
-    int v;
-    int g;
+    char c;
 
-    if (ac != 2)
+    
+    // if (ac != 2)
+    // {
+    //     write(1, "usage", 5);
+    //     return (0);
+    // }
+    fd = open("test.txt", O_RDONLY);
+    if (!isValid(fd))
     {
-        write(1, "usage", 5);
-        return (0);
+        printf("erorr");
     }
-    fd = open(av[1], O_RDWR);
-    while ((g = get_char(fd, &line)) == 1)
-        printf("%s\n", line);
-    if ((g = get_char(fd, &line)) == -1 || (v = is_valid(&line)) == -1)
-        return (ft_error(-1));
-    //    printf("%s\n", line);
+    // if (get_char(fd, &line) == -1 || (is_valid(&line) == -1))
+    //     return (ft_error(-1));
+    // //    printf("%s\n", line);
     return (0);
 }
