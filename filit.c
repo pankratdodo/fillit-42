@@ -17,6 +17,15 @@
 #include "get_next_line.h"
 #include "libft/libft.h"
 
+# define BUF_SIZE 1
+
+int get_char(int fd, char **line)
+{
+    if (fd < 0 || line == NULL || (read(fd, NULL, 0) < 0))
+		return (-1);
+        while ()
+}
+
 int ft_error(int r)
 {
     if (r == -1)
@@ -37,9 +46,9 @@ int main(int ac, char **av)
         return (0);
     }
     fd = open(av[1], O_RDWR);
-    while ((g = get_next_line(fd, &line)) == 1)
+    while ((g = get_char(fd, &line)) == 1)
         printf("%s\n", line);
-    if ((g = get_next_line(fd, &line)) == -1 || (v = is_valid(&line)) == -1)
+    if ((g = get_char(fd, &line)) == -1 || (v = is_valid(&line)) == -1)
         return (ft_error(-1));
     //    printf("%s\n", line);
     return (0);

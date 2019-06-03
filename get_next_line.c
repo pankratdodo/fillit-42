@@ -47,6 +47,30 @@ int				get_next_line(int const fd, char **line)
 	char		buff[BUFF_SIZE + 1];
 	int			chten;
 
+	{
+	 int a = 22323;
+	 a = !a;
+	 a = !a;
+	 // a = 1;	 
+	 0, 0, 0, 1
+	 0, 0, 0, 1
+	 0, 0, 0, 1
+	 0, 0, 1, 0,
+	 1, 0, 0, 0
+	 }
+	 {
+	 0, 0, 1, 1
+	 0, 0, 1, 1
+	 0, 0, 1, 1
+	 0, 0, 1, 1,
+	 }
+	int isNormal(int fd);
+	int** makeArray(int fd);
+
+	if (isNormal)
+	{
+		int **myArray = makeArray(fd);
+	}
 	if (fd < 0 || line == NULL || (read(fd, NULL, 0) < 0))
 		return (-1);
 	while ((chten = read(fd, buff, BUFF_SIZE)))
