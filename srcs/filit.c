@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   filit.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: plettie <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/27 17:07:11 by plettie           #+#    #+#             */
-/*   Updated: 2019/05/27 17:07:12 by plettie          ###   ########.fr       */
+/*   Updated: 2019/06/04 10:59:18 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 #include <stdio.h>
 #include <fcntl.h>
 #include <unistd.h>
-#include "get_next_line.h"
-#include "libft/libft.h"
+#include "../includes/get_next_line.h"
+#include "../libft/libft.h"
 
 # define BUF_SIZE 1
 

@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: plettie <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/18 13:09:47 by plettie           #+#    #+#             */
-/*   Updated: 2019/05/04 17:25:45 by plettie          ###   ########.fr       */
+/*   Updated: 2019/06/04 10:58:35 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
-#include "libft/libft.h"
+#include "../includes/get_next_line.h"
+#include "../libft/libft.h"
 
 int				ft_str_fd(char **str, char **line, int fd, int res)
 {

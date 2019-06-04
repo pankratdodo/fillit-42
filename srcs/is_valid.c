@@ -15,8 +15,8 @@
 // #include <stdio.h>
 // #include <fcntl.h>
 // #include <unistd.h>
-// #include "get_next_line.h"
-// #include "libft/libft.h"
+// #include "../includes/get_next_line.h"
+// #include "../libft/libft.h"
 
 // int len_all(char **line) //подстчет количества строк и проверка на валидность по количеству
 // {
