@@ -1,22 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_valid.h                                         :+:      :+:    :+:   */
+/*   fillit.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/04 10:53:57 by caellis           #+#    #+#             */
-/*   Updated: 2019/06/06 14:43:28 by caellis          ###   ########.fr       */
+/*   Created: 2019/06/06 14:47:43 by caellis           #+#    #+#             */
+/*   Updated: 2019/06/06 14:58:37 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef IS_VALID_H
-# define IS_VALID_H
+#ifndef FILLIT_H
+# define FILLIT_H
 
-#include <stdlib.h>
-#include <fcntl.h>
-#include <unistd.h>
+/*
+** Хэдеры функций, используемых в fillit.c (это и есть наш main)
+*/
+#include "../includes/is_valid.h"
 
-char        is_valid(int fd, char *c_map);
+/*
+** Основная структура
+*/
+typedef	struct		s_list
+{
+	char	index;
+	
+}					t_tetris;
+
 
 #endif
