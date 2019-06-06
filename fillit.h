@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fillit.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
+/*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/06 14:47:43 by caellis           #+#    #+#             */
-/*   Updated: 2019/06/06 14:58:37 by caellis          ###   ########.fr       */
+/*   Updated: 2019/06/06 20:05:34 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@
 /*
 ** Хэдеры функций, используемых в fillit.c (это и есть наш main)
 */
-#include "../includes/is_valid.h"
-
+#include "is_valid.h"
+#include "get_next_line.h"
 /*
 ** Основная структура
 */
-typedef	struct		s_list
+typedef	struct		s_tetris
 {
 	char	index;
 	
