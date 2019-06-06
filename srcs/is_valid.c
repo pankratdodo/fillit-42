@@ -6,7 +6,7 @@
 /*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/27 17:07:11 by plettie           #+#    #+#             */
-/*   Updated: 2019/06/06 13:11:32 by caellis          ###   ########.fr       */
+/*   Updated: 2019/06/06 14:49:14 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static char		*ft_strchr(const char *s, int c)
 	return (&str[i]);
 }
 
-char        is_valid(int fd)
+char        is_valid(int fd, char *c_map)
 {
     char *c = malloc(21);
     char *head;
@@ -61,6 +61,5 @@ char        is_valid(int fd)
     }
     if (kol == -1 || time > 26)
         return (0);
-    return (1);
-        
+    return (1); 
 }
