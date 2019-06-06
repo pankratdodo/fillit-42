@@ -3,73 +3,70 @@
 /*                                                        :::      ::::::::   */
 /*   filit.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/27 17:07:11 by plettie           #+#    #+#             */
-/*   Updated: 2019/06/04 10:59:18 by caellis          ###   ########.fr       */
+/*   Updated: 2019/06/06 12:41:27 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include <stdio.h>
 #include <fcntl.h>
 #include <unistd.h>
 #include "../includes/get_next_line.h"
-#include "../libft/libft.h"
+#include "../includes/libft.h"
 
-# define BUF_SIZE 1
-
-char get_figure(int fd)
+char		*ft_strchr(const char *s, int c)
 {
-    char c[20];
-    int n;
-    
-    if (fd < 0 || (read(fd, NULL, 0) < 0))
-		return (0);
-    if (!(n = read(fd, c, 20)))
-        return (0);
-    return (c);
+	char	*str;
+	int		i;
+	char	k;
+
+	k = (char)c;
+	i = 0;
+	while (s[i] != k)
+	{
+		if (!s[i])
+			return (0);
+		i++;
+	}
+	str = (char*)s;
+	return (&str[i]);
 }
 
-int ft_error(int r)
+char is_valid(int fd)
 {
-    if (r == -1)
-        write (1, "error\n", 6);
-    exit(0);
-}
+    char *c = malloc(21);
+    char *head;
+    int kol;
+    int time;
+    int count;
 
-
-int isNeighbor(char **figa, int x, int y)
-{
-
-}
-int isValid(int fd)
-{
-
-    char c;
-    char bc;
-    int nb;
-
-    nb = 0;
-    while ((c = get_char(fd)))
+    head = c;
+    time = 0;
+    while ((kol = read(fd, c, 21)) > 0 && ++time < 27)
     {
-        if (!ft_strchr(".#\n", c))
+        if (kol != 21 || c[4] != '\n' || !((c[9] | c[14] | c[19] | c[20]) == c[4]))
             return (0);
-        if (c == '\n')
+        count = 0;
+        while (*c && count < 5)
         {
-            if (c == bc)
-            {
-                if (nb != 16)
-                    return (0);
-                nb = 0;
-            }
+            c = ft_strchr(c, '#');
+            if (!c)
+                break;
+            count++;
+            if (*(c - 1) != '#' && *(c + 1) != '#' && *(c - 5) != '#' && *(c + 5) != '#')
+                return (0);
+            c++;
         }
-        else
-            nb++;
-        bc = c;
+        if (count != 4)
+            return (0);
+        c = head;
     }
-    
+    if (kol == -1 || time > 26)
+        return (0);
     return (1);
+        
 }
 
 int main(int ac, char **av)
@@ -77,19 +74,15 @@ int main(int ac, char **av)
     int fd;
     char c;
 
-    
-    // if (ac != 2)
-    // {
-    //     write(1, "usage", 5);
-    //     return (0);
-    // }
-    fd = open("test.txt", O_RDONLY);
-    if (!isValid(fd))
+    if (ac != 2)
     {
-        printf("erorr");
+        write(1, "usage", 5);
+        return (0);
     }
-    // if (get_char(fd, &line) == -1 || (is_valid(&line) == -1))
-    //     return (ft_error(-1));
-    // //    printf("%s\n", line);
+    fd = open("test.txt", O_RDONLY);
+    if (is_valid(fd))
+        write(1, "harosh", 6);
+    else
+        write(1, "sore ne valid", 13);
     return (0);
 }
