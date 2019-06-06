@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
+/*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/22 17:03:41 by plettie           #+#    #+#             */
-/*   Updated: 2019/06/06 13:07:58 by caellis          ###   ########.fr       */
+/*   Created: 2019/05/03 15:48:26 by caellis           #+#    #+#             */
+/*   Updated: 2019/05/04 16:34:45 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-# include <stdlib.h>
-# include <stdio.h>
-
-# define BUFF_SIZE 2048
-
-int		get_next_line(int const fd, char **line);
-int		ft_str_fd(char **str, char **line, int fd, int ret);
-
-#endif
+void	ft_lstdelone(t_list **alst, void (*del)(void*, size_t))
+{
+	if (alst && *alst && del)
+	{
+		(*del)((*alst)->content, (*alst)->content_size);
+		free(*alst);
+		*alst = NULL;
+	}
+}

@@ -4,3 +4,4 @@
 *.out
 *.ipch
 *test*
+*.template

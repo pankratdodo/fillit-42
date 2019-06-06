@@ -1,125 +1,66 @@
-// /* ************************************************************************** */
-// /*                                                                            */
-// /*                                                        :::      ::::::::   */
-// /*   is_valid.c                                         :+:      :+:    :+:   */
-// /*                                                    +:+ +:+         +:+     */
-// /*   By: plettie <marvin@42.fr>                     +#+  +:+       +#+        */
-// /*                                                +#+#+#+#+#+   +#+           */
-// /*   Created: 2019/05/29 16:58:48 by plettie           #+#    #+#             */
-// /*   Updated: 2019/05/29 16:58:50 by plettie          ###   ########.fr       */
-// /*                                                                            */
-// /* ************************************************************************** */
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   is_valid.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/05/27 17:07:11 by plettie           #+#    #+#             */
+/*   Updated: 2019/06/06 13:11:32 by caellis          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-// #include <string.h>
-// #include <stdlib.h>
-// #include <stdio.h>
-// #include <fcntl.h>
-// #include <unistd.h>
-// #include "../includes/get_next_line.h"
-// #include "../libft/libft.h"
+#include "../includes/is_valid.h"
 
-// int len_all(char **line) //подстчет количества строк и проверка на валидность по количеству
-// {
-//     size_t i;
-//     size_t j;
-//     size_t k;
+static char		*ft_strchr(const char *s, int c)
+{
+	char	*str;
+	int		i;
+	char	k;
 
-//     i = 0;
-//     j = 0;
-//     k = 0; // количество фигур
-//     while (line[i][j])
-//     {
-//         if ((j % (4 + 5 * k) == 0 && line[i][j]) || k > 26) //проверка на количество строк в каждой фигурке и количество фигурок
-//             return (-1);
-//         else if (j % (4 + 5 * k) == 0 && !line[i][j])
-//             k++;
-//         j++;
-//     }
-//     return (j);
-// }
+	k = (char)c;
+	i = 0;
+	while (s[i] != k)
+	{
+		if (!s[i])
+			return (0);
+		i++;
+	}
+	str = (char*)s;
+	return (&str[i]);
+}
 
-// int kol_resh(char **line, int k) //функция чекает количество # в каждой фигуре и количество столбцов
-// {
-//     size_t i;
-//     size_t j;
-//     size_t resh;
+char        is_valid(int fd)
+{
+    char *c = malloc(21);
+    char *head;
+    int kol;
+    int time;
+    int count;
 
-//     i = 0;
-//     j = 0;
-//     resh = 0;
-//     while (k)
-//     {
-//         while (i < 4 && j % 4 != 0)
-//         {
-//             if (line[i][j] == '#')
-//                 resh++;
-//             i++;
-//         }
-//         if (line[0][j] == '\n') //когда в строке только /n
-//         {
-//             if (resh != 4)
-//                 return (2);
-//             resh = 0;
-//         }
-//         if (line[4][j]) // не много ли столбцов в фигурке
-//             return (2);
-//         j++;
-//         i = 0;
-//         k--;
-//     }
-//     return (0);
-// }
-
-// int nal_n(char **line, int k) // функция чекает наличие \n после каждой фигуры и в середине
-// {
-//     size_t i;
-//     size_t j;
-
-//     i = 0;
-//     j = 0;
-//     while (k)
-//     {
-//         if (line[4][j] && line[0][j] != '\n') //невозможно оба условия вместе
-//             return (2);
-//         j++;
-//         k--;
-//     }
-//     return (0);
-// }
-
-// int touch(char **line, int k) //чекает соседей #, если их нет, то ошибка
-// {
-//     size_t i;
-//     size_t j;
-
-//     i = 0;
-//     j = 0;
-//     while (k)
-//     {
-//         while(line[i][j])
-//         {
-//             if (line[i][j] == '#' && line[i - 1][j] != '#' && line[i + 1][j] != '#' && line[i][j - 1] != '#' && line[i][j + 1] != '#')
-//                 return (2);
-//             i++;
-//         }
-//         i = 0;
-//         j++;
-//         k--;
-//     }
-//     return (0);
-// }
-
-// int is_valid(char **line) //основная функция
-// {
-//     int res;
-//     int k;
-
-//     res = 0;
-//     if ((k = len_all(line)) < 0)
-//         return (-1);
-//     if (((res = kol_resh(line, k)) == 2) || ((res = nal_n(line, k)) == 2) || ((res = touch(line, k)) == 2))
-//         return (-1);
-//     else
-//         return (1);
-// }
-
+    head = c;
+    time = 0;
+    while ((kol = read(fd, c, 21)) > 0 && ++time < 27)
+    {
+        if (kol != 21 || c[4] != '\n' || !((c[9] | c[14] | c[19] | c[20]) == c[4]))
+            return (0);
+        count = 0;
+        while (*c && count < 5)
+        {
+            c = ft_strchr(c, '#');
+            if (!c)
+                break;
+            count++;
+            if (*(c - 1) != '#' && *(c + 1) != '#' && *(c - 5) != '#' && *(c + 5) != '#')
+                return (0);
+            c++;
+        }
+        if (count != 4)
+            return (0);
+        c = head;
+    }
+    if (kol == -1 || time > 26)
+        return (0);
+    return (1);
+        
+}

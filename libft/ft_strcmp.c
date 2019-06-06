@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
+/*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/22 17:03:41 by plettie           #+#    #+#             */
-/*   Updated: 2019/06/06 13:07:58 by caellis          ###   ########.fr       */
+/*   Created: 2019/04/18 16:13:58 by caellis           #+#    #+#             */
+/*   Updated: 2019/05/04 17:18:35 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-# include <stdlib.h>
-# include <stdio.h>
-
-# define BUFF_SIZE 2048
-
-int		get_next_line(int const fd, char **line);
-int		ft_str_fd(char **str, char **line, int fd, int ret);
-
-#endif
+int		ft_strcmp(const char *s1, const char *s2)
+{
+	while (*s1 == *s2++)
+	{
+		if (*s1++ == '\0')
+			return (0);
+	}
+	return (*(unsigned char *)s1 - *(unsigned char *)(s2 - 1));
+}

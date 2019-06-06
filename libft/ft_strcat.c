@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strccat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
+/*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/22 17:03:41 by plettie           #+#    #+#             */
-/*   Updated: 2019/06/06 13:07:58 by caellis          ###   ########.fr       */
+/*   Created: 2019/04/09 16:00:24 by caellis           #+#    #+#             */
+/*   Updated: 2019/04/10 17:57:38 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-# include <stdlib.h>
-# include <stdio.h>
+char	*ft_strcat(char *s1, const char *s2)
+{
+	char	*buff;
 
-# define BUFF_SIZE 2048
-
-int		get_next_line(int const fd, char **line);
-int		ft_str_fd(char **str, char **line, int fd, int ret);
-
-#endif
+	buff = s1;
+	while (*buff)
+		buff++;
+	while (*s2)
+		*(buff++) = *(s2++);
+	*buff = '\0';
+	return (s1);
+}

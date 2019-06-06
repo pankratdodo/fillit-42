@@ -1,24 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_countwords.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
+/*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/22 17:03:41 by plettie           #+#    #+#             */
-/*   Updated: 2019/06/06 13:07:58 by caellis          ###   ########.fr       */
+/*   Created: 2019/04/30 14:02:24 by caellis           #+#    #+#             */
+/*   Updated: 2019/05/04 16:33:30 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-# include <stdlib.h>
-# include <stdio.h>
+size_t		ft_countwords(char const *str, char c)
+{
+	size_t count;
 
-# define BUFF_SIZE 2048
-
-int		get_next_line(int const fd, char **line);
-int		ft_str_fd(char **str, char **line, int fd, int ret);
-
-#endif
+	count = 0;
+	while (*str)
+	{
+		while (*str == c)
+			str++;
+		if (*str && *str != c)
+			count++;
+		while (*str && *str != c)
+			str++;
+	}
+	return (count);
+}
