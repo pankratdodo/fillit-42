@@ -6,12 +6,11 @@
 /*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/18 13:09:47 by plettie           #+#    #+#             */
-/*   Updated: 2019/06/04 10:58:35 by caellis          ###   ########.fr       */
+/*   Updated: 2019/06/06 18:49:27 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/get_next_line.h"
-#include "../libft/libft.h"
+#include "get_next_line.h"
 
 int				ft_str_fd(char **str, char **line, int fd, int res)
 {

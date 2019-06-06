@@ -6,8 +6,7 @@
 4. clean_up - если где-то что-то выделяли - удаляем все
 
 Структура папки
-- includes - headers
-- srcs - C files
+- Пары %.c:%.h (так по заданию, видать, нужно)
 - libft - lib files
 - Makefile (TBA)
 
