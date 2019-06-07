@@ -6,7 +6,7 @@
 #    By: caellis <caellis@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/07 14:05:14 by caellis           #+#    #+#              #
-#    Updated: 2019/06/07 15:16:11 by caellis          ###   ########.fr        #
+#    Updated: 2019/06/07 15:17:31 by caellis          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ echo "\nTHIS IS TO CHECK 0 & 2 inputs\n==>\n"
 echo "0 arguments:\n"$RED
 ./fillit
 echo $NC"\n2 arguments:\n"$RED
-./fillit development_/tetriminox_tester/input/valid/valid_00 development_/tetriminox_tester/input/valid/valid_01
+./fillit development_/input/valid/valid_00 development_/input/valid/valid_01
 echo $NC
 read -n 1 -s -r -p "Press any key to continue"
 
