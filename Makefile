@@ -6,7 +6,7 @@
 #    By: caellis <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/08 14:04:08 by caellis           #+#    #+#              #
-#    Updated: 2019/06/06 20:03:57 by caellis          ###   ########.fr        #
+#    Updated: 2019/06/07 13:31:23 by caellis          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,10 +26,10 @@ HEADERS = $(patsubst %.c,%.h,$(SOURCE))
 all: $(NAME)
 
 $(NAME): $(OBJECTS)
-	@$(CC) -o $@ $^ $(LIB)
+	@$(CC) -g -o $@ $^ $(LIB)
 
 %.o : %.c $(HEADERS)
-	@$(CC) $(FLAGS) -c $(SOURCE) -I$(INCLUDE) $(LIB)
+	@$(CC) $(FLAGS) -g -c $(SOURCE) -I$(INCLUDE) $(LIB)
 
 clean :
 	@rm -rf $(wildcard *.o)
