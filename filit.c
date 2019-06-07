@@ -69,8 +69,7 @@ char isValid(int fd)
     }
     if (kol == -1 || time > 26 || count != 24)
         return (0);
-    return (1);
-        
+    return (1);  
 }
 
 int main(int ac, char **av)
@@ -88,5 +87,6 @@ int main(int ac, char **av)
         write(1, "harosh", 6);
     else
         write(1, "sore ne valid", 13);
+    close (fd);
     return (0);
 }
