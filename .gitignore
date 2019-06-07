@@ -3,5 +3,4 @@
 *.[ao]
 *.out
 *.ipch
-*test*
 *.template
