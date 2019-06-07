@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   filit.c                                            :+:      :+:    :+:   */
+/*   is_valid.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: plettie <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/27 17:07:11 by plettie           #+#    #+#             */
-/*   Updated: 2019/05/27 17:07:12 by plettie          ###   ########.fr       */
+/*   Updated: 2019/06/06 18:49:52 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <fcntl.h>
-#include <unistd.h>
+#include "is_valid.h"
 
+<<<<<<< HEAD:filit.c
 #define onError(head){\
         free(head);\
         head = NULL;\
@@ -21,6 +20,9 @@
 }\
 
 char		*ft_strchr(char *s, char resh)
+=======
+static char		*ft_strchr(const char *s, int c)
+>>>>>>> 562c038d1395682b0fa437a75c17c4e5d6491b59:is_valid.c
 {
 	int		i;
     int count;
@@ -38,7 +40,11 @@ char		*ft_strchr(char *s, char resh)
 	return (&s[i]);
 }
 
+<<<<<<< HEAD:filit.c
 char isValid(int fd)
+=======
+char        is_valid(int fd, char *c_map)
+>>>>>>> 562c038d1395682b0fa437a75c17c4e5d6491b59:is_valid.c
 {
     char *c = malloc(21);
     char *head;
@@ -69,6 +75,7 @@ char isValid(int fd)
     }
     if (kol == -1 || time > 26 || count != 24)
         return (0);
+<<<<<<< HEAD:filit.c
     return (1);  
 }
 
@@ -90,3 +97,7 @@ int main(int ac, char **av)
     close (fd);
     return (0);
 }
+=======
+    return (1); 
+}
+>>>>>>> 562c038d1395682b0fa437a75c17c4e5d6491b59:is_valid.c
