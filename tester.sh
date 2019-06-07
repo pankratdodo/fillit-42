@@ -6,7 +6,7 @@
 #    By: caellis <caellis@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/07 14:05:14 by caellis           #+#    #+#              #
-#    Updated: 2019/06/07 15:09:53 by caellis          ###   ########.fr        #
+#    Updated: 2019/06/07 15:14:00 by caellis          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,8 +27,8 @@ make -C libft/ re ; make clean
 make re ; make clean
 
 # Input test-files location
-ERROR=development_/tetriminox_tester/input/error/*
-VALID=development_/tetriminox_tester/input/valid/*
+ERROR=development_/test/input/error/*
+VALID=development_/test/input/valid/*
 
 # TESTING 0 and 2 arguments
 echo "\nTHIS IS TO CHECK 0 & 2 inputs\n==>\n"
