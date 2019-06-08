@@ -17,6 +17,6 @@
 #include <fcntl.h>
 #include <unistd.h>
 
-char        is_valid(int fd, char *c_map);
+char        is_valid(int fd);
 
 #endif
