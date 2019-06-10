@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+a/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   fillit.h                                           :+:      :+:    :+:   */
@@ -27,7 +27,7 @@ typedef	struct		s_tetris
 	char			index;			// Letter (a , B , C ...)
 	unsigned short	shape;			// Byte value of a figyre
 	int				xh, xl, y1,y2;	// Coordinates (high and low && x and y respectively)
-
+	s_tetris		*next;
 }					t_tetris;
 
 //t_tetris    *map_2_figures(char *map, t_tetris **figures, char q);

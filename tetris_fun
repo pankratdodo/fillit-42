@@ -1,0 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   tetris_func                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/06/10 19:02:51 by caellis           #+#    #+#             */
+/*   Updated: 2019/06/10 19:07:43 by caellis          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+/* 
+* We could collect functions for t_tetris type here
+* e.g. iter_figures, push_figure, pop_figure, delete_figure,
+* clear_figures, map_figures etc
+*/
