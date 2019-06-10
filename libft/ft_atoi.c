@@ -3,50 +3,39 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: plettie <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/19 13:41:30 by caellis           #+#    #+#             */
-/*   Updated: 2019/05/04 16:16:27 by caellis          ###   ########.fr       */
+/*   Created: 2019/02/04 12:07:34 by plettie           #+#    #+#             */
+/*   Updated: 2019/04/14 11:48:46 by plettie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
-static int	skipws_setneg(char **str)
+int				ft_atoi(const char *str)
 {
-	while (ft_isspace(**str))
-		(*str)++;
-	if (**str == '-')
+	long long	n;
+	int			c;
+
+	c = 1;
+	n = 0;
+	while (*str == 32 || (*str > 8 && *str < 14))
+		str++;
+	if (*str == '-' || *str == '+')
 	{
-		(*str)++;
-		return (1);
+		if (*str == '-')
+			c = -1;
+		str++;
 	}
-	else if (**str == '+')
-		(*str)++;
-	return (0);
-}
-
-int			ft_atoi(const char *str)
-{
-	char		*s;
-	long int	num;
-	int			neg;
-
-	s = (char *)str;
-	num = 0;
-	neg = skipws_setneg(&s);
-	while (ft_isdigit(*s))
+	while (*str >= '0' && *str <= '9')
 	{
-		if (num * 10 / 10 != num)
-		{
-			if (neg)
-				return (0);
+		if (c == -1 && (n != ((n * 10 + (*str - '0')) / 10)))
+			return (0);
+		else if (n != ((n * 10 + (*str - '0')) / 10))
 			return (-1);
-		}
-		num = num * 10 + (*s - '0');
-		s++;
+		n = n * 10 + *str - '0';
+		str++;
 	}
-	if (neg)
-		return (-num);
-	return (num);
+	return (n * c);
 }

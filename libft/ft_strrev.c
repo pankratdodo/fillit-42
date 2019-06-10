@@ -1,20 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isspace.c                                       :+:      :+:    :+:   */
+/*   ft_strrev.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: plettie <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/19 13:23:05 by caellis           #+#    #+#             */
-/*   Updated: 2019/04/19 13:37:30 by caellis          ###   ########.fr       */
+/*   Created: 2019/04/16 14:41:22 by plettie           #+#    #+#             */
+/*   Updated: 2019/04/17 11:48:33 by plettie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_isspace(int c)
+char	*ft_strrev(char *str)
 {
-	if ((c >= 9 && c <= 14) || c == ' ')
-		return (1);
+	int i;
+
+	i = 0;
+	if (!str)
+		return (0);
+	while (str[i])
+		i++;
+	while (i >= 0)
+	{
+		ft_putchar(str[i]);
+		i--;
+	}
 	return (0);
 }

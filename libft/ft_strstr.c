@@ -3,35 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: plettie <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/18 15:34:35 by caellis           #+#    #+#             */
-/*   Updated: 2019/04/18 19:29:44 by caellis          ###   ########.fr       */
+/*   Created: 2019/02/05 14:16:42 by plettie           #+#    #+#             */
+/*   Updated: 2019/04/12 17:15:55 by plettie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strstr(const char *haystack, const char *needle)
+char		*ft_strstr(const char *haystack, const char *needle)
 {
-	const char	*gotcha;
-	const char	*reset;
+	int		i;
+	int		j;
+	char	*h;
+	char	*n;
 
-	reset = needle;
-	if (!*needle || needle == haystack)
-		return ((char *)haystack);
-	while (*haystack)
+	i = 0;
+	j = 0;
+	h = (char*)haystack;
+	n = (char *)needle;
+	if (!n[i])
+		return (h);
+	while (h[i])
 	{
-		gotcha = haystack;
-		while (*haystack == *needle && *needle)
-		{
-			haystack++;
-			needle++;
-		}
-		if (!*needle)
-			return ((char *)gotcha);
-		needle = reset;
-		haystack = gotcha + 1;
+		while (h[i + j] == n[j] && n[j])
+			j++;
+		if (!n[j])
+			return (&h[i]);
+		j = 0;
+		i++;
 	}
-	return (NULL);
+	return (0);
 }

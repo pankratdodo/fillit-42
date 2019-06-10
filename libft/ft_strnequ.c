@@ -3,23 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnequ.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
+/*   By: plettie <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/27 15:26:56 by caellis           #+#    #+#             */
-/*   Updated: 2019/05/06 16:21:36 by caellis          ###   ########.fr       */
+/*   Created: 2019/04/08 11:55:10 by plettie           #+#    #+#             */
+/*   Updated: 2019/04/08 12:06:29 by plettie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strnequ(char const *s1, char const *s2, size_t n)
+int		ft_strnequ(char const *s1, char const *s2, size_t n)
 {
-	int	ans;
+	size_t i;
 
-	ans = 0;
-	if (n == 0)
-		return (1);
-	if (s1 && s2)
-		ans = ft_strncmp(s1, s2, n) ? 0 : 1;
-	return (ans);
+	i = 0;
+	if (!s1 || !s2)
+		return (0);
+	while (s1[i] && s2[i] && i < n)
+	{
+		if (s1[i] != s2[i])
+			return (0);
+		i++;
+	}
+	if ((s1[i] != s2[i]) && i < n)
+		return (0);
+	return (1);
 }

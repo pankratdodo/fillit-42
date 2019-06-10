@@ -1,30 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_countwords.c                                    :+:      :+:    :+:   */
+/*   ft_rrange.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: plettie <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/30 14:02:24 by caellis           #+#    #+#             */
-/*   Updated: 2019/05/04 16:33:30 by caellis          ###   ########.fr       */
+/*   Created: 2019/04/16 14:53:09 by plettie           #+#    #+#             */
+/*   Updated: 2019/04/17 11:50:18 by plettie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t		ft_countwords(char const *str, char c)
+int		*ft_rrange(int start, int end)
 {
-	size_t count;
+	int n;
+	int k;
+	int i;
+	int *mas;
 
-	count = 0;
-	while (*str)
+	k = 0;
+	i = 0;
+	n = start + 1;
+	while (n <= end)
 	{
-		while (*str == c)
-			str++;
-		if (*str && *str != c)
-			count++;
-		while (*str && *str != c)
-			str++;
+		n++;
+		k++;
 	}
-	return (count);
+	mas = (int*)malloc(k + 1);
+	n = start;
+	while (n < end)
+	{
+		mas[i] = n;
+		n++;
+		i++;
+	}
+	mas[i] = '\0';
+	return (mas);
 }

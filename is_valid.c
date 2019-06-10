@@ -10,10 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "is_valid.h"
+#include "fillit.h"
 #include <stdio.h>
 
-static char		*ft_strchr(char *s, int resh)
+static char		*ft_str_my_chr(char *s, int resh)
 {
 	int		i;
     int count;
@@ -81,28 +81,30 @@ static int is_help(char *c)
 
 char is_valid(int fd, char **map)
 {
-    char *c = malloc(21);
+    char *c;
     char *head;
-    char q; //количество йопта
     int kol;
-    int time;
+    int time; //это количество 
     int count;
     int flag;
 
     head = c;
     time = 0; 
     flag = 0;
+    c = malloc(21);
     while ((kol = read(fd, c, 21)) > 0 && ++time < 27)
     {
+        map = malloc(21);
         if (kol < 20 || c[4] != '\n' || (c[9] | c[14] | c[19] | c[kol - 1]) != c[4])
             return (on_error(&head));
         if (kol == 20)
             flag = 1;
-    if (!(count = is_help(c)))
-        return (on_error(&head));
-    c = head;
+        if (!(count = is_help(c)))
+            return (on_error(&head));
+        c = head;
+        ft_strcpy(*map, head);
     }
     if (kol == -1 || kol == 21 || time > 26 || flag == 0)
         return (on_error(&head));
-    return (q);
+    return (time);
 }

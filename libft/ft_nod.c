@@ -1,20 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isupper.c                                       :+:      :+:    :+:   */
+/*   ft_nod.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: plettie <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/19 13:00:01 by caellis           #+#    #+#             */
-/*   Updated: 2019/04/19 13:36:30 by caellis          ###   ########.fr       */
+/*   Created: 2019/04/16 14:47:54 by plettie           #+#    #+#             */
+/*   Updated: 2019/04/17 11:52:07 by plettie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_isupper(int c)
+int			ft_nod(char *s1, char *s2)
 {
-	if (c >= 'A' && c <= 'Z')
-		return (1);
-	return (0);
+	int		p1;
+	int		p2;
+	int		i;
+	int		k;
+
+	if (!s1 || !s2)
+		return (0);
+	p1 = ft_atoi(s1);
+	p2 = ft_atoi(s2);
+	i = 1;
+	k = 0;
+	while (i <= p1 || i <= p2)
+	{
+		if ((p1 % i == 0) && (p2 % i == 0))
+			k = i;
+		i++;
+	}
+	return (k);
 }

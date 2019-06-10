@@ -29,10 +29,10 @@ int         main(int ac, char **av)
     if ((q = is_valid(fd, &map)))
     {
 		write(1, "harosh\n", 7);
-		if (!(figures = map_2_figures(map, &figures, q)))
-            return (0);	                                    // Получаем массив фигурок Или еррор :(
-        if (!(error = solve_it(&figures, q)))               // Получаем еррор ИЛИ печатаем ответ
-            return (0);
+	//	if (!(figures = map_2_figures(map, &figures, q)))
+    //        return (0);	                                    // Получаем массив фигурок Или еррор :(
+   //     if (!(error = solve_it(&figures, q)))               // Получаем еррор ИЛИ печатаем ответ
+    //        return (0);
         //ft_strdel(&map);                                  // Большая этническая чистка мусора (map + figures)
         //ft_tetris_delete(&figures);
 	}

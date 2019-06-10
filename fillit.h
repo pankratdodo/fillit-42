@@ -30,8 +30,8 @@ typedef	struct		s_tetris
 
 }					t_tetris;
 
-t_tetris    *map_2_figures(char *map, t_tetris **figures, char q);
+//t_tetris    *map_2_figures(char *map, t_tetris **figures, char q);
 char        is_valid(int fd, char **map);
-char		solve_it(t_tetris **figures, char q);
+//char		solve_it(t_tetris **figures, char q);
 
 #endif

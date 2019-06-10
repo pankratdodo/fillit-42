@@ -3,32 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
+/*   By: plettie <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/06 10:15:11 by caellis           #+#    #+#             */
-/*   Updated: 2019/05/06 17:32:30 by caellis          ###   ########.fr       */
+/*   Created: 2019/04/06 14:56:39 by plettie           #+#    #+#             */
+/*   Updated: 2019/04/09 13:36:08 by plettie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dst, const void *src, size_t len)
+void				*ft_memmove(void *dst, const void *src, size_t len)
 {
-	unsigned char	*buff;
-	unsigned char	*cast;
+	unsigned char	*s1;
+	unsigned char	*s2;
+	size_t			i;
 
-	buff = (unsigned char *)dst;
-	cast = (unsigned char *)src;
-	if (dst == src)
-		return (dst);
-	if ((size_t)(dst - src) < len)
+	i = 0;
+	if (dst == NULL && src == NULL)
+		return (0);
+	s1 = (unsigned char *)dst;
+	s2 = (unsigned char *)src;
+	if (s2 < s1)
 	{
-		cast += (len - 1);
-		buff += (len - 1);
-		while (len--)
-			*(buff--) = *(cast--);
+		while (len > 0)
+		{
+			s1[len - 1] = s2[len - 1];
+			len--;
+		}
 	}
 	else
-		ft_memcpy(dst, src, len);
-	return (dst);
+		s1 = ft_newstr(&s1[i], &s2[i], len);
+	return ((void *)s1);
 }
