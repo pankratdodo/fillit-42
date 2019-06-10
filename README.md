@@ -10,6 +10,7 @@
 
 **Структура папки**
 - Пары %.c:%.h
+- **fillit.c** - это файл с main'ом
 - libft - lib files
 - Makefile (TBA)
 

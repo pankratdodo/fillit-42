@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   is_valid.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/27 17:07:11 by plettie           #+#    #+#             */
-/*   Updated: 2019/06/06 18:49:52 by caellis          ###   ########.fr       */
+/*   Updated: 2019/06/10 12:53:04 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,11 @@ static char		*ft_strchr(char *s, int resh)
 	return (&s[i]);
 }
 
-static int on_error(char **head)
+static char *on_error(char **head)
 {
     free(*head);
     *head = NULL;
-    return (0);
+    return (NULL);
 }
 
 static int is_sosed(char *c)
@@ -79,7 +79,7 @@ static int is_help(char *c)
     return (1);
 }
 
-char is_valid(int fd)
+char *is_valid(int fd)
 {
     char *c = malloc(21);
     char *head;
@@ -103,23 +103,5 @@ char is_valid(int fd)
     }
     if (kol == -1 || kol == 21 || time > 26 || flag == 0)
         return (on_error(&head));
-    return (1);  
-}
-
-int main(int ac, char **av)
-{
-    int fd;
-
-    if (ac != 2)
-    {
-        write(1, "usage", 5);
-        return (0);
-    }
-    fd = open(av[1], O_RDONLY);
-    if (is_valid(fd))
-        write(1, "harosh", 6);
-    else
-        write(1, "sore ne valid", 13);
-    close (fd);
-    return (0);
+    return (head);  
 }
