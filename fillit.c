@@ -6,7 +6,7 @@
 /*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/06 13:09:49 by caellis           #+#    #+#             */
-/*   Updated: 2019/06/10 12:50:41 by caellis          ###   ########.fr       */
+/*   Updated: 2019/06/10 15:14:37 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int         main(int ac, char **av)
 {
     int 		fd;
-    char 		c;
+    char        q;
 	char		*map;
 	t_tetris	*figures;
 
@@ -25,10 +25,10 @@ int         main(int ac, char **av)
         return (0);
     }
     fd = open(av[1], O_RDONLY);
-    if ((map = is_valid(fd)))
+    if ((q = is_valid(fd, &map)))
     {
 		write(1, "harosh\n", 7);
-		//figures = map_2_figures(map, figures);	// Получаем массив фигурок или ошибку
+		figures = map_2_figures(map, &figures, q);	// Получаем массив фигурок или ошибку
 	}
 	else
         write(1, "sore ne valid\n", 14);      		// Или еррор :(

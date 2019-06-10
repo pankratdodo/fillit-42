@@ -6,7 +6,7 @@
 /*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/27 17:07:11 by plettie           #+#    #+#             */
-/*   Updated: 2019/06/10 12:53:04 by caellis          ###   ########.fr       */
+/*   Updated: 2019/06/10 15:12:47 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,11 @@ static char		*ft_strchr(char *s, int resh)
 	return (&s[i]);
 }
 
-static char *on_error(char **head)
+static char on_error(char **head)
 {
     free(*head);
     *head = NULL;
-    return (NULL);
+    return (0);
 }
 
 static int is_sosed(char *c)
@@ -79,10 +79,11 @@ static int is_help(char *c)
     return (1);
 }
 
-char *is_valid(int fd)
+char is_valid(int fd, char **map)
 {
     char *c = malloc(21);
     char *head;
+    char q; //количество йопта
     int kol;
     int time;
     int count;
@@ -99,9 +100,9 @@ char *is_valid(int fd)
             flag = 1;
     if (!(count = is_help(c)))
         return (on_error(&head));
-        c = head;
+    c = head;
     }
     if (kol == -1 || kol == 21 || time > 26 || flag == 0)
         return (on_error(&head));
-    return (head);  
+    return (q);
 }

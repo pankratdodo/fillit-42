@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fillit.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/06 14:47:43 by caellis           #+#    #+#             */
-/*   Updated: 2019/06/06 20:05:34 by caellis          ###   ########.fr       */
+/*   Updated: 2019/06/10 15:14:12 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,19 @@
 ** Хэдеры функций, используемых в fillit.c (это и есть наш main)
 */
 #include "is_valid.h"
-#include "get_next_line.h"
+
 /*
 ** Основная структура
 */
 typedef	struct		s_tetris
 {
-	char	index;
-	
+	char			index;			// Letter (a , B , C ...)
+	unsigned short	byte;			// Byte value of a figyre
+	int				xh, xl, y1,y2;	// Coordinates (high and low && x and y respectively)
+
 }					t_tetris;
 
+t_tetris    *map_2_figures(char *map, t_tetris **figures, char q);
+char        is_valid(int fd, char **map);
 
 #endif

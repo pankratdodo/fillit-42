@@ -6,7 +6,7 @@
 #    By: caellis <caellis@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/07 14:05:14 by caellis           #+#    #+#              #
-#    Updated: 2019/06/07 15:17:31 by caellis          ###   ########.fr        #
+#    Updated: 2019/06/10 13:33:43 by caellis          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,15 +28,15 @@ make -C libft/ re ; make clean
 make re ; make clean
 
 # Input test-files location
-ERROR=development_/test/input/error/*
-VALID=development_/test/input/valid/*
+ERROR=development_/test_input/error/*
+VALID=development_/test_input/valid/*
 
 # TESTING 0 and 2 arguments
 echo "\nTHIS IS TO CHECK 0 & 2 inputs\n==>\n"
 echo "0 arguments:\n"$RED
 ./fillit
 echo $NC"\n2 arguments:\n"$RED
-./fillit development_/input/valid/valid_00 development_/input/valid/valid_01
+./fillit development_/test_input/valid/valid_00 development_/test_input/valid/valid_01
 echo $NC
 read -n 1 -s -r -p "Press any key to continue"
 
