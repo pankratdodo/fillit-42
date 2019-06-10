@@ -6,7 +6,7 @@
 /*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/06 13:09:49 by caellis           #+#    #+#             */
-/*   Updated: 2019/06/10 19:10:29 by caellis          ###   ########.fr       */
+/*   Updated: 2019/06/10 20:00:12 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ int         main(int ac, char **av)
     {
 		write(1, "harosh\n", 7);
 		/*if (!(figures = map_2_figures(map, &figures, q)))
-    		return (0);*/	  	                                  // Получаем массив фигурок Или еррор :(
-		//while (figures->next)
+    		return (0);	  	                                  // Получаем массив фигурок Или еррор :(		
+		print_figure(figures);*/
 		//if (!(error = solve_it(&figures, q)))               // Получаем еррор ИЛИ печатаем ответ
     //        return (0);
         //ft_strdel(&map);                                  // Большая этническая чистка мусора (map + figures)
