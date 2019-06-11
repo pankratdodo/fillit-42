@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_2_figures.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/06 15:08:15 by caellis           #+#    #+#             */
-/*   Updated: 2019/06/10 19:15:40 by caellis          ###   ########.fr       */
+/*   Updated: 2019/06/11 14:14:55 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,6 @@
 
 t_tetris    *map_2_figures(char *map, t_tetris **figures, char q)
 {
+	
 	return (NULL);
 }
