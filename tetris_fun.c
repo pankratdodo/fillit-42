@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tetris_fun.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
+/*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/10 19:02:51 by caellis           #+#    #+#             */
-/*   Updated: 2019/06/11 15:34:18 by caellis          ###   ########.fr       */
+/*   Updated: 2019/06/12 19:16:40 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,21 @@ void		print_figure(t_tetris *fig)
 {
 	printf("index is: '%c'\n"\
 			"shape is: '%s'\n"\
-			"xl is: '%i', xh is: '%i'\n"\
-			"yl is: '%i', yh is: '%i'\n", \
+			"width is: '%i'\n", \
 				fig->index, fig->shape, \
-				fig->xl, fig->xh, fig->yl, fig->yh);
+				fig->width);
 }
 
+t_tetris	*new_figures(void)
+{
+	t_tetris	*fig;
+
+	if ((fig = (t_tetris *)malloc(sizeof(t_tetris))))
+	{
+		fig->index = 'A';
+		fig->shape = ft_strnew(0);
+		fig->width = 0;
+		fig->next = NULL;
+	}
+	return (NULL);
+}

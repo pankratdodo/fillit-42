@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fillit.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
+/*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/06 14:47:43 by caellis           #+#    #+#             */
-/*   Updated: 2019/06/11 14:14:43 by caellis          ###   ########.fr       */
+/*   Updated: 2019/06/12 19:04:17 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,16 +30,13 @@
 
 typedef struct		s_tetris
 {
-	char			index;
-	char			*shape;
-	int				xl;
-	int				xh;
-	int				yl;
-	int				yh;
+	char			index;		// Letter
+	char			*shape;		// some str containing square
+	char			width;		// length of a side
 	struct s_tetris	*next;
 }					t_tetris;
 
-t_tetris    *map_2_figures(char *map, t_tetris **figures, char q);
+t_tetris    *map_2_figures(char const *map, t_tetris **figures, char q);
 char        is_valid(int fd, char **map);
 //char		solve_it(t_tetris **figures, char q);
 
