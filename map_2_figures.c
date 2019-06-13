@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_2_figures.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/06 15:08:15 by caellis           #+#    #+#             */
-/*   Updated: 2019/06/12 19:17:59 by caellis          ###   ########.fr       */
+/*   Updated: 2019/06/13 15:01:07 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,17 @@
 
 t_tetris    *map_2_figures(char const *map, t_tetris **figures, char q)
 {
-	size_t	i;
-	t_tetris	figures;
+	char		*s_fig;
+	char		i;
 
-	if(!(figures = new_figures()))
-		return(NULL);
-	while (map++)
+	i = 'A';
+	while (i < 'A' + q)
 	{
-		// делай кайф :)
+		MALL_CHECK(s_fig = ft_strsub(map, 0, 20));	// вырезали фигуру, выделяя память
+		map += 21;									// передвинули пойнтер на след. фигуру
+		add_figure(figures, new_figure(s_fig, i));	// засунули в список, вставляя индекс
+		i++;
 	}
-	return (NULL);
+	// Теперь в фигурез у нас лежат отдельные кусочки, но пока не очень удобно
+	return (*figures);
 }

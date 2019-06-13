@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fillit.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/06 14:47:43 by caellis           #+#    #+#             */
-/*   Updated: 2019/06/12 19:04:17 by caellis          ###   ########.fr       */
+/*   Updated: 2019/06/13 14:57:58 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,12 @@ typedef struct		s_tetris
 	struct s_tetris	*next;
 }					t_tetris;
 
-t_tetris    *map_2_figures(char const *map, t_tetris **figures, char q);
-char        is_valid(int fd, char **map);
-//char		solve_it(t_tetris **figures, char q);
+# define MALL_CHECK(x) if (!(x)) return (NULL)
+# define ERR_ZERO(x) if (!(x)) return (0)
+
+t_tetris    		*map_2_figures(char const *map, t_tetris **figures, char q);
+char        		is_valid(int fd, char **map);
+//char				solve_it(t_tetris **figures, char q);
 
 #endif
 
@@ -53,6 +56,8 @@ char        is_valid(int fd, char **map);
 #ifndef TETRIS_FUN_H
 # define TETRIS_FUN_H
 
-void		print_figure(t_tetris *fig);
+void				print_figure(t_tetris *fig);
+t_tetris			*new_figure(char const *s_fig, char i);
+void				add_figure(t_tetris **figs, t_tetris *new);
 
 #endif
