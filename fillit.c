@@ -20,12 +20,14 @@ int         main(int ac, char **av)
 	char		*map;
 	t_tetris	*figures;
 
+
     if (ac != 2)
     {
         write(1, "usage", 5);
         return (0);
     }
     fd = open(av[1], O_RDONLY);
+    map = malloc(546);
     if ((q = is_valid(fd, &map)))
     {
 		write(1, "harosh\n", 7);

@@ -88,12 +88,11 @@ char is_valid(int fd, char **map)
     int flag;
 
     head = c;
-    time = 0; 
+    time = 0;
     flag = 0;
     c = malloc(21);
     while ((kol = read(fd, c, 21)) > 0 && ++time < 27)
     {
-        map = malloc(21);
         if (kol < 20 || c[4] != '\n' || (c[9] | c[14] | c[19] | c[kol - 1]) != c[4])
             return (on_error(&head));
         if (kol == 20)
