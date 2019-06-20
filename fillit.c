@@ -6,7 +6,7 @@
 /*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/06 13:09:49 by caellis           #+#    #+#             */
-/*   Updated: 2019/06/20 12:54:15 by caellis          ###   ########.fr       */
+/*   Updated: 2019/06/20 15:50:15 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int         main(int ac, char **av)
     {
 		ERR_ZERO(figures = map_2_figures(map, &figures, q));    // Получаем массив фигурок Или еррор :(		
 		print_figure(figures);
-		/* ERR_ZERO(!solve_it(&figures, q));                       // Получаем еррор ИЛИ печатаем ответ
+		/* ERR_ZERO(!solve_it(&figures, q));                    // Получаем еррор ИЛИ печатаем ответ
         ft_strdel(&map);                                        // Большая этническая чистка мусора (map + figures)
         ft_tetris_delete(&figures);
 	*/}

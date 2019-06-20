@@ -6,7 +6,7 @@
 /*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/10 19:02:51 by caellis           #+#    #+#             */
-/*   Updated: 2019/06/20 12:57:05 by caellis          ###   ########.fr       */
+/*   Updated: 2019/06/20 15:55:30 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void		print_figure(t_tetris *fig)
 				fig->shape[3].x, fig->shape[3].y);
 }
 
-t_tetris	*new_figure(char const *s_fig, char i, t_point *shape)
+t_tetris	*new_figure(char i, t_point *shape)
 {
 	t_tetris	*fig;
 
@@ -54,4 +54,34 @@ void		add_figure(t_tetris **figs, t_tetris *new)
 			*figs = (*figs)->next;
 		(*figs)->next = new;
 	}
+}
+
+void		abs_point_2_shape(t_point **shape, int p_num, int x, int y)
+{
+	if (shape && *shape)
+	{
+		shape[p_num]->x = x;
+		shape[p_num]->y = y;
+	}
+}
+
+t_point		*set_shape(t_point **shape)
+{
+	int		x_base;
+	int		y_base;
+	int		p_num;
+
+	p_num = 0;
+	if (shape && *shape)
+	{
+		x_base = shape[p_num]->x;
+		y_base = shape[p_num]->y;
+		while (p_num < 4)
+		{
+			shape[p_num]->x -= x_base;
+			shape[p_num]->y -= y_base;
+			p_num++;
+		}
+	}
+	return (*shape);
 }

@@ -6,7 +6,7 @@
 #    By: caellis <caellis@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/07 14:05:14 by caellis           #+#    #+#              #
-#    Updated: 2019/06/10 14:32:56 by caellis          ###   ########.fr        #
+#    Updated: 2019/06/20 15:57:24 by caellis          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ make re ; make clean
 ERROR=development_/test/input/error/*
 VALID=development_/test/input/valid/*
 
-# TESTING HOW FIGURES is being filled (shows map, the number of figures, figures list contents(by running fillit))
+# TESTING HOW FIGURES is being filled 
 for ((i = 0; i < 3; i++))
 do 
 	python3 development_/rand_test.py > curr_test
