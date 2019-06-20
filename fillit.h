@@ -6,7 +6,7 @@
 /*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/06 14:47:43 by caellis           #+#    #+#             */
-/*   Updated: 2019/06/13 14:57:58 by caellis          ###   ########.fr       */
+/*   Updated: 2019/06/20 12:59:14 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,18 @@
 #include <stdio.h>
 
 /*
-** Основная структура
-* Letter (a , B , C ...)
-* Byte value of a figure
-* Coordinates (high and low && x and y respectively)
+** Основные структуры
 */
+typedef struct		s_point
+{
+	int				x;
+	int				y;
+}					t_point;
 
 typedef struct		s_tetris
 {
 	char			index;		// Letter
-	char			*shape;		// some str containing square
-	char			width;		// length of a side
+	t_point			*shape;		// Array of 4 figure points in relative form (e.g. the first point is [x == 0 && y == 0]) 
 	struct s_tetris	*next;
 }					t_tetris;
 
@@ -57,7 +58,7 @@ char        		is_valid(int fd, char **map);
 # define TETRIS_FUN_H
 
 void				print_figure(t_tetris *fig);
-t_tetris			*new_figure(char const *s_fig, char i);
+t_tetris			*new_figure(char const *s_fig, char i, t_point *shape);
 void				add_figure(t_tetris **figs, t_tetris *new);
 
 #endif

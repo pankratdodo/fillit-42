@@ -6,7 +6,7 @@
 /*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/10 19:02:51 by caellis           #+#    #+#             */
-/*   Updated: 2019/06/13 14:40:28 by caellis          ###   ########.fr       */
+/*   Updated: 2019/06/20 12:57:05 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,20 +21,23 @@
 void		print_figure(t_tetris *fig)
 {
 	printf("index is: '%c'\n"\
-			"shape is: '%s'\n"\
-			"width is: '%i'\n", \
-				fig->index, fig->shape, \
-				fig->width);
+			"1st point is: '%i, %i'\n"\
+			"2nd point is: '%i, %i'\n"\
+			"3rd point is: '%i, %i'\n"\
+			"4th point is: '%i, %i'\n", \
+				fig->index, fig->shape[0].x, fig->shape[0].y, \
+				fig->shape[1].x, fig->shape[1].y, \
+				fig->shape[2].x, fig->shape[2].y, \
+				fig->shape[3].x, fig->shape[3].y);
 }
 
-t_tetris	*new_figure(char const *s_fig, char i)
+t_tetris	*new_figure(char const *s_fig, char i, t_point *shape)
 {
 	t_tetris	*fig;
 
 	MALL_CHECK(fig = (t_tetris *)malloc(sizeof(t_tetris)));
-	MALL_CHECK(fig->shape = ft_strdup(s_fig));
 	fig->index = i;
-	fig->width = 4;
+	fig->shape = shape;
 	fig->next = NULL;
 	return (fig);
 }

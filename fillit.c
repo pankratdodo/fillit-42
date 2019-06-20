@@ -6,7 +6,7 @@
 /*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/06 13:09:49 by caellis           #+#    #+#             */
-/*   Updated: 2019/06/19 17:09:28 by caellis          ###   ########.fr       */
+/*   Updated: 2019/06/20 12:54:15 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,8 @@ int         main(int ac, char **av)
         return (0);
     }
     fd = open(av[1], O_RDONLY);
-<<<<<<< HEAD
     map = malloc(546);  
     if ((q = is_valid(fd, &map)))
-=======
-    if (1/* (q = is_valid(fd, &map)) */)                        // Закоменчено до исправления ошибок
->>>>>>> 34b9ca6cdcd4515906f6264f8a50ceddcb2331f9
     {
 		ERR_ZERO(figures = map_2_figures(map, &figures, q));    // Получаем массив фигурок Или еррор :(		
 		print_figure(figures);
