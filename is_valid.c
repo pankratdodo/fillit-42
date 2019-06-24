@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   is_valid.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/27 17:07:11 by plettie           #+#    #+#             */
-/*   Updated: 2019/06/10 19:48:54 by caellis          ###   ########.fr       */
+/*   Updated: 2019/06/24 14:09:19 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static int is_help(char *c)
     nei = 0;
     while (*c && count < 5)
     {
-        c = ft_strchr(c, '#');
+        c = ft_str_my_chr(c, '#');
         if (!c)
             break;
         count++;
