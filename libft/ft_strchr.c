@@ -3,29 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: plettie <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/04 14:06:35 by plettie           #+#    #+#             */
-/*   Updated: 2019/04/12 17:17:43 by plettie          ###   ########.fr       */
+/*   Created: 2019/04/11 14:04:25 by caellis           #+#    #+#             */
+/*   Updated: 2019/04/18 15:34:03 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char		*ft_strchr(const char *s, int c)
+char	*ft_strchr(const char *s, int c)
 {
-	char	*str;
-	int		i;
-	char	k;
+	char	*waldo;
 
-	k = (char)c;
-	i = 0;
-	while (s[i] != k)
-	{
-		if (!s[i])
-			return (0);
-		i++;
-	}
-	str = (char*)s;
-	return (&str[i]);
+	if ((waldo = ft_memchr(s, c, ft_strlen(s) + 1)))
+		return (waldo);
+	return (NULL);
 }

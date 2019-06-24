@@ -3,37 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: plettie <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/08 13:49:44 by plettie           #+#    #+#             */
-/*   Updated: 2019/04/14 12:31:45 by plettie          ###   ########.fr       */
+/*   Created: 2019/04/29 16:21:40 by caellis           #+#    #+#             */
+/*   Updated: 2019/05/04 17:12:47 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char		*ft_strtrim(char const *s)
+char	*ft_strtrim(char const *s)
 {
-	int		i;
-	int		j;
-	int		k;
-	char	*str;
+	char	*trim;
+	int		cue;
 
-	i = 0;
-	j = 0;
-	if (!s)
-		return (0);
-	while (s[i] == '\t' || s[i] == '\n' || s[i] == ' ')
-		i++;
-	k = i;
-	while (s[i + 1])
-		i++;
-	while (s[i] == '\t' || s[i] == '\n' || s[i] == ' ')
-		i--;
-	if (!(str = (char *)malloc(i - k + 2)))
-		return (NULL);
-	while (k <= i)
-		str[j++] = s[k++];
-	str[j] = '\0';
-	return (str);
+	trim = NULL;
+	if (s)
+	{
+		while (ft_isspace(*s))
+			s++;
+		cue = ft_strlen(s) - 1;
+		while (cue > -1 && ft_isspace(s[cue]))
+			cue--;
+		cue++;
+		if ((trim = ft_strnew(cue)))
+			ft_strncpy(trim, s, cue);
+	}
+	return (trim);
 }

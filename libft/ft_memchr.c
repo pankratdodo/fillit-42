@@ -3,30 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: plettie <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/05 12:32:11 by plettie           #+#    #+#             */
-/*   Updated: 2019/04/14 11:50:43 by plettie          ###   ########.fr       */
+/*   Created: 2019/04/06 10:14:47 by caellis           #+#    #+#             */
+/*   Updated: 2019/04/10 16:44:37 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void		*ft_memchr(const void *s, int c, size_t n)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	unsigned char	*src;
-	size_t			i;
-	unsigned char	coun;
+	unsigned char	*buff;
+	unsigned char	waldo;
 
-	i = 0;
-	coun = (unsigned char)c;
-	src = (unsigned char *)s;
-	while (n)
+	buff = (unsigned char *)s;
+	waldo = (unsigned char)c;
+	while (n--)
 	{
-		if (src[i] == coun)
-			return (&src[i]);
-		i++;
-		n--;
+		if (*buff == waldo)
+			return (buff);
+		buff++;
 	}
-	return (0);
+	return (NULL);
 }

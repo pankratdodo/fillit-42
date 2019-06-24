@@ -6,11 +6,27 @@
 /*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/27 17:07:11 by plettie           #+#    #+#             */
-/*   Updated: 2019/06/24 14:09:19 by caellis          ###   ########.fr       */
+/*   Updated: 2019/06/24 14:40:01 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
+
+static char		*ft_strcccpy(char *dst, const char *src)
+{
+	int		i;
+	char	*str;
+
+	i = 0;
+	str = (char *)src;
+	while (str[i])
+	{
+		dst[i] = str[i];
+		i++;
+	}
+	dst[i] = '\0';
+	return (dst);
+}
 
 static char		*ft_str_my_chr(char *s, int resh)
 {
@@ -87,10 +103,10 @@ char is_valid(int fd, char **map)
     int count;
     int flag;
 
+    c = malloc(21);
     head = c;
     time = 0;
     flag = 0;
-    c = malloc(21);
     while ((kol = read(fd, c, 21)) > 0 && ++time < 27)
     {
         if (kol < 20 || c[4] != '\n' || (c[9] | c[14] | c[19] | c[kol - 1]) != c[4])
@@ -100,7 +116,8 @@ char is_valid(int fd, char **map)
         if (!(count = is_help(c)))
             return (on_error(&head));
         c = head;
-        ft_strcpy(map[(time - 1) * 21], head);
+        ft_strcccpy(*map, c);
+        map += 22;
     }
     if (kol == -1 || kol == 21 || time > 26 || flag == 0)
         return (on_error(&head));

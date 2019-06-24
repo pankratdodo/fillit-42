@@ -3,112 +3,74 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strsplit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: plettie <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/08 16:48:27 by plettie           #+#    #+#             */
-/*   Updated: 2019/04/15 13:24:46 by plettie          ###   ########.fr       */
+/*   Created: 2019/04/28 14:37:51 by caellis           #+#    #+#             */
+/*   Updated: 2019/05/04 17:12:27 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char		**ft_free(char **s, int j)
+static size_t	ft_wordlen(char const *s, char c)
 {
-	while (j)
+	size_t len;
+
+	len = 0;
+	while (*s == c)
+		s++;
+	while (*s != c && *s)
 	{
-		j--;
-		ft_memdel((void *)s);
+		len++;
+		s++;
 	}
-	free(s);
-	s = NULL;
-	return (0);
+	return (len);
 }
 
-static int		ft_s(char *str, char c)
+static int		ft_populate(char ***arr, const char *s, char c, size_t pos)
 {
-	int			i;
-	int			k;
+	long	rb;
+	long	w_l;
 
-	i = 0;
-	k = 0;
-	if (str[i] == c)
+	rb = 0;
+	while (*s == c && *s)
 	{
-		while (str[i] == c)
-			i++;
+		rb++;
+		s++;
 	}
-	if (!str[i])
-		return (0);
-	while (str[i] != '\0')
-	{
-		if (str[i] == c && str[i - 1] != c)
-			k++;
-		i++;
-	}
-	if (str[i] == '\0' && str[i - 1] != c)
-		k++;
-	return (k);
-}
-
-static char		*ft_mem(char *s, int m)
-{
-	char		*str;
-	int			i;
-
-	i = 0;
-	if (!(str = (char*)malloc(sizeof(char) * (m + 1))))
-		return (0);
-	while (m > i)
-	{
-		str[i] = s[i];
-		i++;
-	}
-	str[i] = '\0';
-	return (str);
-}
-
-static int		ft_size(char *str, char c)
-{
-	int			m;
-	int			i;
-
-	i = 0;
-	m = 0;
-	while (str[i] == c)
-		i++;
-	while (str[i])
-	{
-		if (str[i] != c)
-			m++;
-		if (str[i] == c && str[i - 1] != c)
-			return (m);
-		i++;
-	}
-	return (m);
+	w_l = ft_wordlen(s, c);
+	if (((*arr)[pos] = ft_strnew(w_l)))
+		ft_strncpy((*arr)[pos], s, w_l);
+	else
+		return (-1);
+	return (rb + w_l);
 }
 
 char			**ft_strsplit(char const *s, char c)
 {
-	char		**s1;
-	int			i;
-	int			j;
+	char		**split;
+	size_t		w_c;
+	long		rb;
+	size_t		i;
 
-	if (!s)
-		return (0);
-	i = 0;
-	j = 0;
-	if (!(s1 = (char **)malloc(sizeof(char*) * ((ft_s((char *)(s), c)) + 1))))
-		return (0);
-	while (j < (ft_s((char *)(s), c)))
+	split = NULL;
+	if (s && c)
 	{
-		if (s[i] != c)
+		w_c = ft_countwords(s, c);
+		if ((split = (char **)ft_memalloc(sizeof(char*) * (w_c + 1))))
 		{
-			if (!(s1[j] = ft_mem((char*)(&s[i]), ft_size((char*)&s[i], c))))
-				return (ft_free(&s1[j], j));
-			j++;
-			i += ft_size((char*)&s[i], c);
+			i = 0;
+			while (i < w_c)
+			{
+				if ((rb = ft_populate(&split, s, c, i)) < 0)
+				{
+					ft_freearray(&split, w_c);
+					break ;
+				}
+				s += rb;
+				i++;
+			}
 		}
-		i++;
 	}
-	s1[j] = NULL;
-	return (s1);
+	return (split);
 }

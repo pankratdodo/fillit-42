@@ -6,7 +6,7 @@
 /*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/06 13:09:49 by caellis           #+#    #+#             */
-/*   Updated: 2019/06/21 14:53:49 by caellis          ###   ########.fr       */
+/*   Updated: 2019/06/24 14:34:14 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int         main(int ac, char **av)
         return (0);
     }
     fd = open(av[1], O_RDONLY);
-    map = malloc(547);  
+    map = ft_strnew(1000);  
     if ((q = is_valid(fd, &map)))                               // В map - лежит только последняя фигура
     {                                                           // поэтому я пока буду юзать test_map переменную
 		close(fd);

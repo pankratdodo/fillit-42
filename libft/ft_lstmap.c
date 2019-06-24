@@ -3,36 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: plettie <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/15 16:07:19 by plettie           #+#    #+#             */
-/*   Updated: 2019/04/17 11:55:35 by plettie          ###   ########.fr       */
+/*   Created: 2019/05/03 17:14:08 by caellis           #+#    #+#             */
+/*   Updated: 2019/05/04 16:35:01 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list		*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
+t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
-	t_list	*res;
-	t_list	*str;
-	t_list	*s;
+	t_list	*new;
 
-	if (!lst || !f)
-		return (0);
-	s = f(lst);
-	if ((res = ft_lstnew(s->content, s->content_size)))
+	new = NULL;
+	if (lst && f)
 	{
-		str = res;
-		lst = lst->next;
-		while (lst != NULL)
+		new = (*f)(lst);
+		new->next = ft_lstmap(lst->next, f);
+		if (lst->next && (!new->next))
 		{
-			s = (*f)(lst);
-			if (!(str->next = ft_lstnew(s->content, s->content_size)))
-				return (NULL);
-			str = str->next;
-			lst = lst->next;
+			free(new->content);
+			ft_memdel((void**)&new);
+			return (NULL);
 		}
 	}
-	return (res);
+	return (new);
 }
