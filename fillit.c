@@ -6,7 +6,7 @@
 /*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/06 13:09:49 by caellis           #+#    #+#             */
-/*   Updated: 2019/06/20 15:50:15 by caellis          ###   ########.fr       */
+/*   Updated: 2019/06/21 14:53:49 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int         main(int ac, char **av)
     char        error;
     char        q;
 	char		*map;
+    char        *test_map;  // Временная переменная для карты
 	t_tetris	*figures;
 
 
@@ -27,10 +28,12 @@ int         main(int ac, char **av)
         return (0);
     }
     fd = open(av[1], O_RDONLY);
-    map = malloc(546);  
-    if ((q = is_valid(fd, &map)))
-    {
-		ERR_ZERO(figures = map_2_figures(map, &figures, q));    // Получаем массив фигурок Или еррор :(		
+    map = malloc(547);  
+    if ((q = is_valid(fd, &map)))                               // В map - лежит только последняя фигура
+    {                                                           // поэтому я пока буду юзать test_map переменную
+		close(fd);
+        read(open(av[1], O_RDONLY), (test_map = malloc(547)), 547);
+        ERR_ZERO(figures = map_2_figures(test_map, &figures, q));    // Получаем массив фигурок Или еррор :(		
 		print_figure(figures);
 		/* ERR_ZERO(!solve_it(&figures, q));                    // Получаем еррор ИЛИ печатаем ответ
         ft_strdel(&map);                                        // Большая этническая чистка мусора (map + figures)

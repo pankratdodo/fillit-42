@@ -6,7 +6,7 @@
 /*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/10 19:02:51 by caellis           #+#    #+#             */
-/*   Updated: 2019/06/20 15:55:30 by caellis          ###   ########.fr       */
+/*   Updated: 2019/06/24 13:58:34 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,12 +74,12 @@ t_point		*set_shape(t_point **shape)
 	p_num = 0;
 	if (shape && *shape)
 	{
-		x_base = shape[p_num]->x;
-		y_base = shape[p_num]->y;
+		x_base = (*shape)[p_num].x;
+		y_base = (*shape)[p_num].y;
 		while (p_num < 4)
 		{
-			shape[p_num]->x -= x_base;
-			shape[p_num]->y -= y_base;
+			(*shape)[p_num].x -= x_base;
+			(*shape)[p_num].y -= y_base;
 			p_num++;
 		}
 	}

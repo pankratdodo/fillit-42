@@ -6,7 +6,7 @@
 #    By: caellis <caellis@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/07 14:05:14 by caellis           #+#    #+#              #
-#    Updated: 2019/06/20 15:57:24 by caellis          ###   ########.fr        #
+#    Updated: 2019/06/21 14:50:26 by caellis          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,4 +42,5 @@ do
 	read -n 1 -s -r -p "Press any key to continue"
 done
 
+# CLEANUP
 rm -rf curr_test
