@@ -100,7 +100,7 @@ char is_valid(int fd, char **map)
         if (!(count = is_help(c)))
             return (on_error(&head));
         c = head;
-        ft_strcpy(*map, head);
+        ft_strcpy(map[(time - 1) * 21], head);
     }
     if (kol == -1 || kol == 21 || time > 26 || flag == 0)
         return (on_error(&head));
