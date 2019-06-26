@@ -6,7 +6,7 @@
 /*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/06 14:47:43 by caellis           #+#    #+#             */
-/*   Updated: 2019/06/20 15:50:44 by caellis          ###   ########.fr       */
+/*   Updated: 2019/06/26 14:15:55 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ typedef struct		s_tetris
 # define MALL_CHECK(x) if (!(x)) return (NULL)
 # define ERR_ZERO(x) if (!(x)) return (0)
 
-t_tetris    		*map_2_figures(char const *map, t_tetris **figures, char q);
+t_tetris    		*map_2_figures(char const *map, t_tetris *figures, char q);
 char        		is_valid(int fd, char **map);
 //char				solve_it(t_tetris **figures, char q);
 
@@ -57,7 +57,7 @@ char        		is_valid(int fd, char **map);
 #ifndef TETRIS_FUN_H
 # define TETRIS_FUN_H
 
-void				print_figure(t_tetris *fig);
+void				print_figure(t_tetris **figures);
 t_tetris			*new_figure(char i, t_point *shape);
 void				add_figure(t_tetris **figs, t_tetris *new);
 void				abs_point_2_shape(t_point **shape, int p_num, int x, int y);

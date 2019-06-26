@@ -6,7 +6,7 @@
 /*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/06 13:09:49 by caellis           #+#    #+#             */
-/*   Updated: 2019/06/24 15:32:19 by caellis          ###   ########.fr       */
+/*   Updated: 2019/06/26 14:16:00 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ int         main(int ac, char **av)
     {                                                           // поэтому я пока буду юзать test_map переменную
 		close(fd);
         read(open(av[1], O_RDONLY), (test_map = malloc(547)), 547);
-        ERR_ZERO(figures = map_2_figures(test_map, &figures, 10));    // Получаем массив фигурок Или еррор :(		
-		print_figure(figures);
+        ERR_ZERO(figures = map_2_figures(test_map, figures, 10));    // Получаем массив фигурок Или еррор :(		
+		print_figure(&figures);
 		/* ERR_ZERO(!solve_it(&figures, q));                    // Получаем еррор ИЛИ печатаем ответ
         ft_strdel(&map);                                        // Большая этническая чистка мусора (map + figures)
         ft_tetris_delete(&figures);
