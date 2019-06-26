@@ -6,13 +6,13 @@
 /*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/06 15:08:15 by caellis           #+#    #+#             */
-/*   Updated: 2019/06/24 16:19:45 by caellis          ###   ########.fr       */
+/*   Updated: 2019/06/26 14:14:17 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-t_tetris    *map_2_figures(char const *map, t_tetris **figures, char q)
+t_tetris    *map_2_figures(char const *map, t_tetris *figures, char q)
 {
 	char		*s_fig;
 	char		index;
@@ -22,7 +22,7 @@ t_tetris    *map_2_figures(char const *map, t_tetris **figures, char q)
 
 	MALL_CHECK(shape = (t_point *)malloc(sizeof(t_point) * 5));
 	index = 'A';
-	while (index++ < 'A' + q)
+	while (index < 'A' + q)
 	{
 		i = 0;
 		p_num = 0;
@@ -33,9 +33,9 @@ t_tetris    *map_2_figures(char const *map, t_tetris **figures, char q)
 			i++;
 		}
 		shape = set_shape(&shape);
-		add_figure(figures, new_figure(index, shape));
-		if (index != 'A' + q)
-			map += 22;
+		add_figure(&figures, new_figure(index, shape));
+		index++;
+		map += 21;
 	}
-	return (*figures);
+	return (figures);
 }
