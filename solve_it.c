@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   solve_it.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/26 17:41:22 by caellis           #+#    #+#             */
-/*   Updated: 2019/06/27 13:12:41 by caellis          ###   ########.fr       */
+/*   Updated: 2019/06/27 13:47:06 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,9 @@ int			ez_sqrt(int x)
 	sqrt = 1;
 	while (sqrt * sqrt < x)
 		sqrt++;
-	
-	return (sqrt--);
+	if (x / sqrt != sqrt)
+		sqrt =  sqrt * ez_sqrt(sqrt);
+	return (sqrt);
 }
 
 t_cell		*map_init(int size)
@@ -47,13 +48,11 @@ t_cell		*map_init(int size)
 	return (c_map);
 }
 
-t_cell		*solve_it(t_tetris **figures, char q)
+t_cell		*solve_it(t_tetris **figures, int size, char pos)
 {
 	t_cell		*c_map;
-	int			size;
 
-	size = 8 * q;			// площадь оптимального оптимального решения <= этой (и >= 4 * q)
-	c_map = map_init(size);	// Выдели среднюю необходимую карту_точек
-	//print_out(cracker(&c_map, *figures, position, size, flag));							// Найди карту_точек и распечатай как норм карту
+	MALL_CHECK(c_map = map_init(size));	// Выдели среднюю необходимую карту_точек
+	cracker(&c_map, *figures, pos, size, flag);							// Найди карту_точек и распечатай как норм карту
 	return (c_map);
 }
