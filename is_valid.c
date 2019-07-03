@@ -12,22 +12,6 @@
 
 #include "fillit.h"
 
-static char		*ft_strcccpy(char *dst, const char *src)
-{
-	int		i;
-	char	*str;
-
-	i = 0;
-	str = (char *)src;
-	while (str[i])
-	{
-		dst[i] = str[i];
-		i++;
-	}
-	dst[i] = '\0';
-	return (dst);
-}
-
 static char		*ft_str_my_chr(char *s, int resh)
 {
 	int		i;
@@ -94,7 +78,7 @@ static int is_help(char *c)
     return (1);
 }
 
-char is_valid(int fd, char **map)
+char is_valid(int fd)
 {
     char *c;
     char *head;
@@ -116,8 +100,6 @@ char is_valid(int fd, char **map)
         if (!(count = is_help(c)))
             return (on_error(&head));
         c = head;
-        ft_strcccpy(*map, c);
-        map += 22;
     }
     if (kol == -1 || kol == 21 || time > 26 || flag == 0)
         return (on_error(&head));
