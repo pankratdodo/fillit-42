@@ -48,7 +48,7 @@ typedef struct		s_cell
 # define ERR_ZERO(x) if (!(x)) return (0)
 
 t_tetris    		*map_2_figures(char const *map, t_tetris *figures, char q);
-char        		is_valid(int fd, char **map);
+char        		is_valid(int fd);
 t_cell				*solve_it(t_tetris **figures, int size, char pos);
 
 #endif

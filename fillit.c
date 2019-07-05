@@ -17,7 +17,6 @@ int         main(int ac, char **av)
     int 		fd;
     char        error;
     char        q;
-	char		*map;
     char        *test_map;  // Временная переменная для карты
 	t_tetris	*figures;
 
@@ -28,8 +27,7 @@ int         main(int ac, char **av)
         return (0);
     }
     fd = open(av[1], O_RDONLY);
-    map = ft_strnew(1000);  
-    if (1/*(q = is_valid(fd, &map))*/)                               // В map - лежит только последняя фигура
+    if (q = is_valid(fd))                            // В map - лежит только последняя фигура
     {                                                           // поэтому я пока буду юзать test_map переменную
 		close(fd);
         read(open(av[1], O_RDONLY), (test_map = malloc(547)), 547);
