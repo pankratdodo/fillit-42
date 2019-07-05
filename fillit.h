@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fillit.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
+/*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/06 14:47:43 by caellis           #+#    #+#             */
-/*   Updated: 2019/06/27 13:23:46 by caellis          ###   ########.fr       */
+/*   Updated: 2019/07/05 21:48:27 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ t_cell				*solve_it(t_tetris **figures, int size, char pos);
 #ifndef SOLVE_IT_H
 # define SOLVE_IT_H
 
-t_cell		*cracker(t_cell **c_map, t_tetris *figures);
+t_cell		*cracker(t_cell **c_map, t_tetris *figures, int side, char *flag);
 void		print_out(t_cell *c_map);
 t_cell		*map_init(int size);
 

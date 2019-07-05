@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    test_map2tetris.sh                                 :+:      :+:    :+:    #
+#    test_map2figures.sh                                :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: caellis <caellis@student.42.fr>            +#+  +:+       +#+         #
+#    By: caellis <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/07 14:05:14 by caellis           #+#    #+#              #
-#    Updated: 2019/06/21 14:50:26 by caellis          ###   ########.fr        #
+#    Updated: 2019/07/05 21:47:16 by caellis          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,8 +20,9 @@ BLUE='\033[0;34m'
 NC='\033[0;m'
 
 # MAKING
-make -C libft/ re ; make clean
-make re ; make clean
+make -C libft/ re
+make re
+make clean
 
 # Input test-files location
 ERROR=development_/test/input/error/*

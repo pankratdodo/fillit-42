@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tetris_fun.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
+/*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/10 19:02:51 by caellis           #+#    #+#             */
-/*   Updated: 2019/06/26 14:23:10 by caellis          ###   ########.fr       */
+/*   Updated: 2019/07/05 21:49:29 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,4 +113,17 @@ t_point		*set_shape(t_point **shape)
 				(*shape)[2].x, (*shape)[2].y, \
 				(*shape)[3].x, (*shape)[3].y); */
 	return (*shape);
+}
+
+
+int			ez_sqrt(int x)
+{
+	int		sqrt;
+
+	sqrt = 1;
+	while (sqrt * sqrt < x)
+		sqrt++;
+	if (x / sqrt != sqrt)
+		sqrt =  sqrt * ez_sqrt(sqrt);
+	return (sqrt);
 }

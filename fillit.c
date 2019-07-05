@@ -35,7 +35,7 @@ int         main(int ac, char **av)
         read(open(av[1], O_RDONLY), (test_map = malloc(547)), 547);
         ERR_ZERO(figures = map_2_figures(test_map, figures, 10));    // Получаем массив фигурок Или еррор :(		
 		print_figure(&figures);
-		/* ERR_ZERO(!solve_it(&figures, 4 * q * q, 0));             // Получаем еррор ИЛИ печатаем ответ; площадь оптимального оптимального решения <= 8 * q (и >= 4 * q)
+		/* ERR_ZERO(!solve_it(&figures, 2, 0));             // Получаем еррор ИЛИ печатаем ответ; площадь оптимального оптимального решения <= 8 * q (и >= 4 * q)
         ft_strdel(&map);                                        // Большая этническая чистка мусора (map + figures)
         ft_tetris_delete(&figures);
 	*/}
