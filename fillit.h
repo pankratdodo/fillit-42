@@ -6,7 +6,7 @@
 /*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/06 14:47:43 by caellis           #+#    #+#             */
-/*   Updated: 2019/07/15 16:47:56 by caellis          ###   ########.fr       */
+/*   Updated: 2019/07/15 17:17:59 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ t_cell				*solve_it(t_list *solutions, t_tetris *figures, int side);
 #ifndef SOLVE_IT_H
 # define SOLVE_IT_H
 
-int			cracker(t_cell **c_map, t_tetris *figures, int side, int pos, char *flag);
 void		print_out(t_cell *c_map);
 t_cell		*map_init(int size);
 
