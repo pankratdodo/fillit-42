@@ -6,7 +6,7 @@
 /*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/06 15:08:15 by caellis           #+#    #+#             */
-/*   Updated: 2019/06/26 14:14:17 by caellis          ###   ########.fr       */
+/*   Updated: 2019/07/15 13:03:30 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ t_tetris    *map_2_figures(char const *map, t_tetris *figures, char q)
 	int			p_num;
 	t_point		*shape;
 
-	MALL_CHECK(shape = (t_point *)malloc(sizeof(t_point) * 5));
 	index = 'A';
+	MALL_CHECK(shape = (t_point *)malloc(sizeof(t_point) * 4));
 	while (index < 'A' + q)
 	{
 		i = 0;
@@ -37,5 +37,6 @@ t_tetris    *map_2_figures(char const *map, t_tetris *figures, char q)
 		index++;
 		map += 21;
 	}
+	free(shape);
 	return (figures);
 }

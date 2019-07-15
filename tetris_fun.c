@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tetris_fun.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/10 19:02:51 by caellis           #+#    #+#             */
-/*   Updated: 2019/07/05 21:49:29 by caellis          ###   ########.fr       */
+/*   Updated: 2019/07/15 13:04:26 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,32 @@ void		print_figure(t_tetris **figures)
 	printf("THE TOTAL of FIGURES IS: %d\n\n", q);
 }
 
+t_point		*copy_shape(t_point *shape)
+{
+	t_point	*copy;
+	int		p_num;
+
+	p_num = 0;
+	MALL_CHECK(copy = (t_point *)malloc(sizeof(t_point) * 4));
+	if (shape)
+	{
+		while (p_num < 4)
+		{
+			copy[p_num].x = shape[p_num].x;
+			copy[p_num].y = shape[p_num].y;
+			p_num++;
+		}
+	}
+	return (copy);
+}
+
 t_tetris	*new_figure(char i, t_point *shape)
 {
 	t_tetris	*fig;
 
 	MALL_CHECK(fig = (t_tetris *)malloc(sizeof(t_tetris)));
 	fig->index = i;
-	fig->shape = shape;
+	fig->shape = copy_shape(shape);
 	fig->next = NULL;
 	return (fig);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   solve_it.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/26 17:41:22 by caellis           #+#    #+#             */
-/*   Updated: 2019/07/05 21:49:18 by caellis          ###   ########.fr       */
+/*   Updated: 2019/07/15 17:16:40 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,6 @@
 /*
 * return NULL on error or just print the damn answer
 */
-t_cell		*cracker(t_cell **c_map, t_tetris *figures, int side, char &flag)
-{
-	//check if you can fit the map
-
-	return (NULL);
-}
-
 
 t_cell		*map_init(int side)
 {
@@ -39,16 +32,27 @@ t_cell		*map_init(int side)
 	return (c_map);
 }
 
-t_cell		*solve_it(t_tetris **figures, int side, char pos)
+t_cell		*solve_it(t_list *solutions, t_tetris *figures, int side)
 {
-	t_list		*crackers;
 	t_cell		*c_map;
 	size_t		map_size;
 	char		flag;
+	char		pos;
 
+	pos = 0;
+	flag = -1;
+	if (!figures)
+	{
+		// Значит мы уже все решили и надо только выбрать ответ
+		// return (select_solution(solutions));
+	}
 	MALL_CHECK(c_map = map_init(side));	// Выдели среднюю необходимую карту_точек
-	map_size = sizeof(t_cell) * side * side + 1;
-	MALL_CHECK(crackers = ft_lstnew(c_map, map_size));
-	cracker(&c_map, *figures, side, &flag);		// Найди карту_точек и распечатай как норм карту
-	return (c_map);
+	while (pos < (map_size = sizeof(t_cell) * side * side + 1))
+	{
+		
+	}
+	cracker(&c_map, figures, side, pos, &flag);
+	ft_lstadd(&solutions, ft_lstnew(c_map, map_size));
+	
+	return (solve_it(solutions, figures, side + 1));
 }

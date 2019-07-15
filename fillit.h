@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fillit.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/06 14:47:43 by caellis           #+#    #+#             */
-/*   Updated: 2019/07/05 21:48:27 by caellis          ###   ########.fr       */
+/*   Updated: 2019/07/15 16:47:56 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ typedef struct		s_tetris
 
 typedef struct		s_cell
 {
-	char				x;
-	char				y;
+	char			x;
+	char			y;
 	char			ind;
 }					t_cell;
 
@@ -49,14 +49,14 @@ typedef struct		s_cell
 
 t_tetris    		*map_2_figures(char const *map, t_tetris *figures, char q);
 char        		is_valid(int fd);
-t_cell				*solve_it(t_tetris **figures, int size, char pos);
+t_cell				*solve_it(t_list *solutions, t_tetris *figures, int side);
 
 #endif
 
 #ifndef SOLVE_IT_H
 # define SOLVE_IT_H
 
-t_cell		*cracker(t_cell **c_map, t_tetris *figures, int side, char *flag);
+int			cracker(t_cell **c_map, t_tetris *figures, int side, int pos, char *flag);
 void		print_out(t_cell *c_map);
 t_cell		*map_init(int size);
 
@@ -78,5 +78,6 @@ t_tetris			*new_figure(char i, t_point *shape);
 void				add_figure(t_tetris **figs, t_tetris *new);
 void				abs_point_2_shape(t_point **shape, int p_num, int x, int y);
 t_point				*set_shape(t_point **shape);
+int					ez_sqrt(int x);
 
 #endif
