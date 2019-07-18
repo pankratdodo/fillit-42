@@ -21,13 +21,13 @@ static char		*ft_str_my_chr(char *s, int resh)
 	i = 0;
 	while (s[i] != resh)
 	{
-		if (!s[i] || (s[i] != '.' && s[i] != '\n') || count > 3)
-			return (0);
+        if (!s[i] || (s[i] != '.' && s[i] != '\n') || count > 3)
+            return (0);
         if (s[i] == '\n')
             count++;
-		i++;
-	}
-	return (&s[i]);
+        i++;
+    }
+    return (&s[i]);
 }
 
 static char on_error(char **head)
@@ -53,13 +53,33 @@ static int is_sosed(char *c)
     return (nei);
 }
 
+static int ft_urod(char *c)
+{
+    int k;
+    int i;
+
+    k = 0;
+    i = 0;
+    while (c[i])
+    {
+        if (c[i] == '.')
+            k++;
+        i++;
+    }
+    if (k != 12)
+        return (0);
+    return (1);
+}
+
 static int is_help(char *c)
 {
     int count;
     int nei;
 
     count = 0;
-    nei = 0;
+    nei = 1;
+    if (!(nei = ft_urod(c)))
+        return (0);
     while (*c && count < 5)
     {
         c = ft_str_my_chr(c, '#');
@@ -72,9 +92,8 @@ static int is_help(char *c)
     }
     if (count != 4)
         return (0);
-    if (nei != 6 && nei != 8)
+    if (nei != 7 && nei != 9)
         return (0);
-    nei = 0;
     return (1);
 }
 
