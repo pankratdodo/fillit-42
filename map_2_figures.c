@@ -6,7 +6,7 @@
 /*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/06 15:08:15 by caellis           #+#    #+#             */
-/*   Updated: 2019/07/15 13:03:30 by caellis          ###   ########.fr       */
+/*   Updated: 2019/07/19 14:34:12 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ t_tetris    *map_2_figures(char const *map, t_tetris *figures, char q)
 		index++;
 		map += 21;
 	}
+	add_figure(&figures, new_figure((char)0, shape));
 	free(shape);
 	return (figures);
 }
