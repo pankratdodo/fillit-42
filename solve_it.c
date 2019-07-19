@@ -6,7 +6,7 @@
 /*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/26 17:41:22 by caellis           #+#    #+#             */
-/*   Updated: 2019/07/20 00:30:32 by caellis          ###   ########.fr       */
+/*   Updated: 2019/07/20 00:50:42 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ t_cell		*map_init(int side)
 	return (c_map);
 }
 
-int		insert_figure(t_cell *map, t_tetris **figs, int pos, int side)
+int		cracker(t_cell *map, t_tetris **figs, t_list *sols, int pos, int side)
 {
 	int			i;
 	t_tetris	*fig;
@@ -41,10 +41,15 @@ int		insert_figure(t_cell *map, t_tetris **figs, int pos, int side)
 	int			flag;
 	int			pos_to_fill[4];
 
-	flag = 0;
+	fig = *figs;
+	if (!fig || fig->index == (char)0)
+	{
+		ft_lstadd(&sols, ft_lstnew(map, sizeof(t_cell) * side * side + 1));
+		return (1);
+	}
 	if (pos == side * side)
 		return (0);
-	fig = *figs;
+	flag = 0;
 	while (fig->index != (char)0)
 	{
 		i = 0;
@@ -53,9 +58,9 @@ int		insert_figure(t_cell *map, t_tetris **figs, int pos, int side)
 			x_ctl = map[pos].x + fig->shape[i].x;
 			y_ctl = map[pos].y + fig->shape[i].y;
 			if (x_ctl < 0 || x_ctl >= side || y_ctl < 0 || y_ctl >= side)
-				return (insert_figure(map, figs, ++pos, side));
+				return (cracker(map, &fig, sols, ++pos, side));
 			if (map[pos + fig->shape[i].x * side + fig->shape[i].y].ind != 0)
-				return (insert_figure(map, figs, ++pos, side));
+				return (cracker(map, &fig, sols, ++pos, side));
 			else
 				pos_to_fill[i] = pos + fig->shape[i].x * side + fig->shape[i].y;
 			i++;
@@ -71,20 +76,6 @@ int		insert_figure(t_cell *map, t_tetris **figs, int pos, int side)
 	return (1);
 }
 
-int		cracker(t_cell *map, t_tetris *figs, t_list *sols, int pos, int side)
-{
-	if (!figs || figs->index == (char)0)
-	{
-		ft_lstadd(&sols, ft_lstnew(map, sizeof(t_cell) * side * side + 1));
-		return (1);
-	}
-	if (pos == side * side)
-		return (0);
-	if (!insert_figure(map, &figs, pos, side))
-		return (cracker(map, figs, sols, ++pos, side));
-	return (cracker(map, figs, sols, pos, side));
-}
-
 t_cell		*solve_it(t_list *solutions, t_tetris *figures, int side)
 {
 	t_cell		*map;
@@ -92,7 +83,7 @@ t_cell		*solve_it(t_list *solutions, t_tetris *figures, int side)
 
 	pos = 0;
 	MALL_CHECK(map = map_init(side));
-	if (!cracker(map, figures, solutions, pos, side))
+	if (!cracker(map, &figures, solutions, pos, side))
 	{
 		free(map);
 		return (solve_it(solutions, figures, ++side));
