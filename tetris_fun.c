@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tetris_fun.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
+/*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/10 19:02:51 by caellis           #+#    #+#             */
-/*   Updated: 2019/07/15 13:04:26 by caellis          ###   ########.fr       */
+/*   Updated: 2019/07/20 00:03:01 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,8 +140,11 @@ int			ez_sqrt(int x)
 	int		sqrt;
 
 	sqrt = 1;
+	if (x == 2)
+		return (1);
 	while (sqrt * sqrt < x)
 		sqrt++;
+	sqrt--;
 	if (x / sqrt != sqrt)
 		sqrt =  sqrt * ez_sqrt(sqrt);
 	return (sqrt);
