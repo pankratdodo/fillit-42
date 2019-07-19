@@ -6,7 +6,7 @@
 /*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/26 17:41:22 by caellis           #+#    #+#             */
-/*   Updated: 2019/07/19 11:23:12 by caellis          ###   ########.fr       */
+/*   Updated: 2019/07/19 18:01:59 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,21 +32,35 @@ t_cell		*map_init(int side)
 	return (c_map);
 }
 
+int		insert_figure(t_cell *map, t_tetris **figs, int pos, int side)
+{
+	int			i;
+	t_tetris	*fig;
+
+	fig = *figs;
+	while (fig->index != (char)0)
+	{
+		while (i < 4)
+		{
+			
+		}
+		fig = fig->next;
+	}
+	return (1);
+}
+
 int		cracker(t_cell *map, t_tetris *figs, t_list *sols, int pos, int side)
 {
-	int		x;
-	int		y;
-
-	if (!figs)
+	if (!figs || figs->index == (char)0)
 	{
-		
+		ft_lstadd(&sols, ft_lstnew(map, sizeof(t_cell) * side * side + 1));
 		return (1);
 	}
-	while (figs->next)
-	{
-		if (insert_figure(map, figs))//попробуй вставить 
-
-	}
+	if (pos == side * side)
+		return (0);
+	if (!insert_figure(map, &figs, pos, side))
+		return (cracker(map, figs, sols, ++pos, side));
+	cracker(map, figs, sols, pos, side);
 }
 
 t_cell		*solve_it(t_list *solutions, t_tetris *figures, int side)
@@ -54,6 +68,7 @@ t_cell		*solve_it(t_list *solutions, t_tetris *figures, int side)
 	t_cell		*map;
 	int			pos;
 
+	pos = 0;
 	MALL_CHECK(map = map_init(side));
 	if (!cracker(map, figures, solutions, pos, side))
 	{
