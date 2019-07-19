@@ -6,7 +6,7 @@
 /*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/26 17:41:22 by caellis           #+#    #+#             */
-/*   Updated: 2019/07/19 18:01:59 by caellis          ###   ########.fr       */
+/*   Updated: 2019/07/19 18:03:16 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int		cracker(t_cell *map, t_tetris *figs, t_list *sols, int pos, int side)
 		return (0);
 	if (!insert_figure(map, &figs, pos, side))
 		return (cracker(map, figs, sols, ++pos, side));
-	cracker(map, figs, sols, pos, side);
+	return (cracker(map, figs, sols, pos, side));
 }
 
 t_cell		*solve_it(t_list *solutions, t_tetris *figures, int side)
