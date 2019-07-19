@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   solve_it.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
+/*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/26 17:41:22 by caellis           #+#    #+#             */
-/*   Updated: 2019/07/19 18:03:16 by caellis          ###   ########.fr       */
+/*   Updated: 2019/07/20 00:30:32 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,35 @@ int		insert_figure(t_cell *map, t_tetris **figs, int pos, int side)
 {
 	int			i;
 	t_tetris	*fig;
+	int			x_ctl;
+	int			y_ctl;
+	int			flag;
+	int			pos_to_fill[4];
 
+	flag = 0;
+	if (pos == side * side)
+		return (0);
 	fig = *figs;
 	while (fig->index != (char)0)
 	{
+		i = 0;
 		while (i < 4)
 		{
-			
+			x_ctl = map[pos].x + fig->shape[i].x;
+			y_ctl = map[pos].y + fig->shape[i].y;
+			if (x_ctl < 0 || x_ctl >= side || y_ctl < 0 || y_ctl >= side)
+				return (insert_figure(map, figs, ++pos, side));
+			if (map[pos + fig->shape[i].x * side + fig->shape[i].y].ind != 0)
+				return (insert_figure(map, figs, ++pos, side));
+			else
+				pos_to_fill[i] = pos + fig->shape[i].x * side + fig->shape[i].y;
+			i++;
+		}
+		i = 0;
+		while (i < 4)
+		{
+			map[pos_to_fill[i]].ind = fig->index;
+			i++;
 		}
 		fig = fig->next;
 	}
