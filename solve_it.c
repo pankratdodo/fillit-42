@@ -6,7 +6,7 @@
 /*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/26 17:41:22 by caellis           #+#    #+#             */
-/*   Updated: 2019/07/15 17:18:47 by caellis          ###   ########.fr       */
+/*   Updated: 2019/07/19 11:23:12 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,35 @@ t_cell		*map_init(int side)
 	return (c_map);
 }
 
+int		cracker(t_cell *map, t_tetris *figs, t_list *sols, int pos, int side)
+{
+	int		x;
+	int		y;
+
+	if (!figs)
+	{
+		
+		return (1);
+	}
+	while (figs->next)
+	{
+		if (insert_figure(map, figs))//попробуй вставить 
+
+	}
+}
+
 t_cell		*solve_it(t_list *solutions, t_tetris *figures, int side)
 {
-	return (NULL);
+	t_cell		*map;
+	int			pos;
+
+	MALL_CHECK(map = map_init(side));
+	if (!cracker(map, figures, solutions, pos, side))
+	{
+		free(map);
+		return (solve_it(solutions, figures, ++side));
+	}
+	// Теперь нужно выбрать из всех решений самое пиздатое 
+	// - у него должна быть наименьшая площадь и ширина занимаемых клеток
+	return (map);
 }
