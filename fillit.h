@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fillit.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
+/*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/06 14:47:43 by caellis           #+#    #+#             */
-/*   Updated: 2019/07/15 17:17:59 by caellis          ###   ########.fr       */
+/*   Updated: 2019/07/20 11:33:03 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,17 +47,17 @@ typedef struct		s_cell
 # define MALL_CHECK(x) if (!(x)) return (NULL)
 # define ERR_ZERO(x) if (!(x)) return (0)
 
-t_tetris    		*map_2_figures(char const *map, t_tetris *figures, char q);
-char        		is_valid(int fd);
-t_cell				*solve_it(t_list *solutions, t_tetris *figures, int side);
+t_tetris    *map_2_figures(char const *map, t_tetris *figures, char q);
+char        is_valid(int fd);
+t_cell		*solve_it(t_list *solutions, t_tetris *figures, int side);
 
 #endif
 
 #ifndef SOLVE_IT_H
 # define SOLVE_IT_H
 
-void		print_out(t_cell *c_map);
 t_cell		*map_init(int size);
+void		print_map(t_cell *c_map, int side);
 
 #endif
 
