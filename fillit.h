@@ -6,7 +6,7 @@
 /*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/06 14:47:43 by caellis           #+#    #+#             */
-/*   Updated: 2019/07/20 11:33:03 by caellis          ###   ########.fr       */
+/*   Updated: 2019/07/21 04:05:39 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ typedef struct		s_cell
 
 t_tetris    *map_2_figures(char const *map, t_tetris *figures, char q);
 char        is_valid(int fd);
-t_cell		*solve_it(t_list *solutions, t_tetris *figures, int side);
+int			solve_it(t_list *solutions, t_tetris *figures, int side, int pos);
 
 #endif
 
