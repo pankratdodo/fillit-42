@@ -1,0 +1,69 @@
+--- end of invalid test ---
+[0;32minvalid test succeed, 26 / 26[0m
+--- begin of valid test ---
+valid test 0 : [0;32mok[0m
+valid test 1 : [0;32mok[0m
+valid test 2 : [0;32mok[0m
+valid test 3 : [0;32mok[0m
+valid test 4 : [0;32mok[0m
+valid test 5 : [0;32mok[0m
+valid test 6 : [0;32mok[0m
+valid test 7 : [0;32mok[0m
+valid test 8 : [0;32mok[0m
+valid test 9 : [0;32mok[0m
+valid test 10 : [0;32mok[0m
+valid test 11 : [0;31mfail :/[0m
+WHAT IS EXPECTED:
+ACC..
+AACCB
+ADBBB
+.DD.E
+.DEEE
+YOUR OUTPUT:
+A...BCC.
+AABBBDCC
+A.E..DD.
+EEE..D..
+........
+........
+........
+........
+valid test 12 : [0;32mok[0m
+valid test 13 : [0;32mok[0m
+valid test 14 : [0;32mok[0m
+valid test 15 : [0;32mok[0m
+valid test 16 : [0;31mfail :/[0m
+WHAT IS EXPECTED:
+ABBBB.
+ACCCEE
+AFFCEE
+A.FFGG
+HHHDDG
+.HDD.G
+YOUR OUTPUT:
+ABBBBCCCEE
+A.DDFF.CEE
+ADDGGFFHHH
+A...G...H.
+....G.....
+..........
+..........
+..........
+..........
+..........
+valid test 17 : [0;32mok[0m
+valid test 18 : [0;32mok[0m
+valid test 19 : [0;31mfail :/[0m
+WHAT IS EXPECTED:
+.A.BBCC
+AABBCCD
+EAF.GGD
+E.FFGGD
+EEHFI.D
+..H.II.
+..HHI..
+YOUR OUTPUT:
+
+--- end of valid test ---
+[0;31mvalid test failed, 17 / 20[0m
+NOTE: [0;31m43 / 46[0m
