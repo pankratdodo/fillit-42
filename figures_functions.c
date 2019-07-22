@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   figures_functions.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
+/*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/10 19:02:51 by caellis           #+#    #+#             */
-/*   Updated: 2019/07/22 15:58:45 by caellis          ###   ########.fr       */
+/*   Updated: 2019/07/23 02:03:36 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,5 @@ char			ez_sqrt(int x)
 	while (sqrt * sqrt <= x)
 		sqrt++;
 	sqrt--;
-	if (x / sqrt != sqrt)
-		sqrt =  sqrt * ez_sqrt(sqrt);
 	return ((char)sqrt);
 }
