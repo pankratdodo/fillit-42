@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   solve_it.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
+/*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/26 17:41:22 by caellis           #+#    #+#             */
-/*   Updated: 2019/07/22 15:57:09 by caellis          ###   ########.fr       */
+/*   Updated: 2019/07/23 01:55:35 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,15 +74,12 @@ int		cracker(t_cell *map, t_tetris *figures)
 	pos = 0;
 	if (figures->index == 0)
 		return (1);
-	while (pos <= map->side * map->side)
+	while ((points = can_insert(map, figures, NULL, pos)))
 	{
-		if ((points = can_insert(map, figures, NULL, pos)))
-		{
-			insert_figure(map, figures, points);
-			if (cracker(map, figures->next))
-				return (1);
-			clean_figure(map, points);
-		}
+		insert_figure(map, figures, points);
+		if (cracker(map, figures->next))
+			return (1);
+		clean_figure(map, points);
 		pos++;
 	}
 	return (0);
