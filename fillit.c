@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fillit.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
+/*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/06 13:09:49 by caellis           #+#    #+#             */
-/*   Updated: 2019/07/22 15:56:54 by caellis          ###   ########.fr       */
+/*   Updated: 2019/07/22 17:07:57 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int         main(int ac, char **av)
         //  ft_mapdelete(&map);
 	}
 	else
-        write(1, "sore ne valid\n", 14);
+        ft_putstr("error\n");
     close(fd);
     return (0);
 }
