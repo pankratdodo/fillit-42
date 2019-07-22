@@ -6,7 +6,7 @@
 /*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/10 19:02:51 by caellis           #+#    #+#             */
-/*   Updated: 2019/07/22 15:13:26 by caellis          ###   ########.fr       */
+/*   Updated: 2019/07/22 15:58:45 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,39 +17,6 @@
 */
 
 #include "fillit.h"
-
-void		print_figure(t_tetris **figures)
-{
-	t_tetris	*fig;
-	int			q;
-
-	q = 0;
-	fig = *figures;
-	printf("index is: '%c'\n"\
-			"1st point is: '%i, %i'\n"\
-			"2nd point is: '%i, %i'\n"\
-			"3rd point is: '%i, %i'\n"\
-			"4th point is: '%i, %i'\n\n", \
-				fig->index, fig->shape[0].x, fig->shape[0].y, \
-				fig->shape[1].x, fig->shape[1].y, \
-				fig->shape[2].x, fig->shape[2].y, \
-				fig->shape[3].x, fig->shape[3].y);
-	q = 1;
-	while ((fig = fig->next))
-	{
-		printf("index is: '%c'\n"\
-			"1st point is: '%i, %i'\n"\
-			"2nd point is: '%i, %i'\n"\
-			"3rd point is: '%i, %i'\n"\
-			"4th point is: '%i, %i'\n\n", \
-				fig->index, fig->shape[0].x, fig->shape[0].y, \
-				fig->shape[1].x, fig->shape[1].y, \
-				fig->shape[2].x, fig->shape[2].y, \
-				fig->shape[3].x, fig->shape[3].y);
-		q++;
-	}
-	printf("THE TOTAL of FIGURES IS: %d\n\n", --q);
-}
 
 t_point		*copy_shape(t_point *shape)
 {

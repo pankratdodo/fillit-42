@@ -6,7 +6,7 @@
 /*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/06 14:47:43 by caellis           #+#    #+#             */
-/*   Updated: 2019/07/22 15:52:52 by caellis          ###   ########.fr       */
+/*   Updated: 2019/07/22 15:58:10 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,6 @@ void		print_map(t_cell *c_map, char side);
 #ifndef TETRIS_FUN_H
 # define TETRIS_FUN_H
 
-void				print_figure(t_tetris **figures);
 t_tetris			*new_figure(char i, char number, t_point *shape);
 void				add_figure(t_tetris **figs, t_tetris *new);
 void				abs_point_2_shape(t_point **shape, int p_num, int x, int y);

@@ -6,7 +6,7 @@
 /*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/26 17:41:22 by caellis           #+#    #+#             */
-/*   Updated: 2019/07/22 15:51:48 by caellis          ###   ########.fr       */
+/*   Updated: 2019/07/22 15:57:09 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,5 @@ t_cell	*solve_it(t_tetris *figures, char side)
 		free(map);
 		return (solve_it(figures, ++side));
 	}
-	ft_putstr("This should be the result:\n");		//для дебага
 	return (map);
 }
