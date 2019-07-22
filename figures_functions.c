@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   figures_functions.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/10 19:02:51 by caellis           #+#    #+#             */
-/*   Updated: 2019/07/20 14:01:59 by caellis          ###   ########.fr       */
+/*   Updated: 2019/07/22 15:13:26 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,12 +70,13 @@ t_point		*copy_shape(t_point *shape)
 	return (copy);
 }
 
-t_tetris	*new_figure(char i, t_point *shape)
+t_tetris	*new_figure(char i, char number, t_point *shape)
 {
 	t_tetris	*fig;
 
 	MALL_CHECK(fig = (t_tetris *)malloc(sizeof(t_tetris)));
 	fig->index = i;
+	fig->number = number;
 	fig->shape = copy_shape(shape);
 	fig->next = NULL;
 	return (fig);
@@ -135,7 +136,7 @@ t_point		*set_shape(t_point **shape)
 }
 
 
-int			ez_sqrt(int x)
+char			ez_sqrt(int x)
 {
 	int		sqrt;
 
@@ -147,5 +148,5 @@ int			ez_sqrt(int x)
 	sqrt--;
 	if (x / sqrt != sqrt)
 		sqrt =  sqrt * ez_sqrt(sqrt);
-	return (sqrt);
+	return ((char)sqrt);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fillit.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/06 13:09:49 by caellis           #+#    #+#             */
-/*   Updated: 2019/07/21 04:08:18 by caellis          ###   ########.fr       */
+/*   Updated: 2019/07/22 14:27:09 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int         main(int ac, char **av)
     char        q;
     char        *input;
 	t_tetris	*figures;
-	t_list		*solutions;
+	t_cell		*map;
 
     if (ac != 2)
     {
@@ -32,11 +32,13 @@ int         main(int ac, char **av)
 		close(fd);
         read(open(av[1], O_RDONLY), (input = malloc(547)), 547);
         ERR_ZERO(figures = map_2_figures(input, figures, q));
-		print_figure(&figures);
-		solve_it((solutions = NULL), figures, ez_sqrt(4 * q), 0);
-        /*ft_strdel(&input);        //чисти input
-        ft_tetris_delete(&figures); //чисти figures
-	*/}
+		print_figure(&figures);     // для дебага
+		map = solve_it(figures, ez_sqrt(4 * q));
+        print_map(map, map->side);
+        ft_strdel(&input);          //чисти input
+        //  ft_tetris_delete(&figures); //чисти figures
+        //  ft_mapdelete(&map);
+	}
 	else
         write(1, "sore ne valid\n", 14);
     close(fd);
