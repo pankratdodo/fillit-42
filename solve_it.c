@@ -6,7 +6,7 @@
 /*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/26 17:41:22 by caellis           #+#    #+#             */
-/*   Updated: 2019/07/23 01:55:35 by caellis          ###   ########.fr       */
+/*   Updated: 2019/07/23 02:17:30 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ int		cracker(t_cell *map, t_tetris *figures)
 		if (cracker(map, figures->next))
 			return (1);
 		clean_figure(map, points);
-		pos++;
+		pos = points[0] + 1;
 	}
 	return (0);
 }
