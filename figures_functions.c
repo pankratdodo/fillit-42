@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tetris_fun.c                                       :+:      :+:    :+:   */
+/*   figures_functions.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/10 19:02:51 by caellis           #+#    #+#             */
-/*   Updated: 2019/07/20 00:03:01 by caellis          ###   ########.fr       */
+/*   Updated: 2019/07/22 15:13:26 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void		print_figure(t_tetris **figures)
 				fig->shape[3].x, fig->shape[3].y);
 		q++;
 	}
-	printf("THE TOTAL of FIGURES IS: %d\n\n", q);
+	printf("THE TOTAL of FIGURES IS: %d\n\n", --q);
 }
 
 t_point		*copy_shape(t_point *shape)
@@ -70,12 +70,13 @@ t_point		*copy_shape(t_point *shape)
 	return (copy);
 }
 
-t_tetris	*new_figure(char i, t_point *shape)
+t_tetris	*new_figure(char i, char number, t_point *shape)
 {
 	t_tetris	*fig;
 
 	MALL_CHECK(fig = (t_tetris *)malloc(sizeof(t_tetris)));
 	fig->index = i;
+	fig->number = number;
 	fig->shape = copy_shape(shape);
 	fig->next = NULL;
 	return (fig);
@@ -135,17 +136,17 @@ t_point		*set_shape(t_point **shape)
 }
 
 
-int			ez_sqrt(int x)
+char			ez_sqrt(int x)
 {
 	int		sqrt;
 
 	sqrt = 1;
 	if (x == 2)
 		return (1);
-	while (sqrt * sqrt < x)
+	while (sqrt * sqrt <= x)
 		sqrt++;
 	sqrt--;
 	if (x / sqrt != sqrt)
 		sqrt =  sqrt * ez_sqrt(sqrt);
-	return (sqrt);
+	return ((char)sqrt);
 }

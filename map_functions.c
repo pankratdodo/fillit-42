@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_2_figures.c                                    :+:      :+:    :+:   */
+/*   map_functions.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/06 15:08:15 by caellis           #+#    #+#             */
-/*   Updated: 2019/07/19 14:34:12 by caellis          ###   ########.fr       */
+/*   Updated: 2019/07/22 15:49:36 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,44 @@ t_tetris    *map_2_figures(char const *map, t_tetris *figures, char q)
 			i++;
 		}
 		shape = set_shape(&shape);
-		add_figure(&figures, new_figure(index, shape));
+		add_figure(&figures, new_figure(index, q, shape));
 		index++;
 		map += 21;
 	}
-	add_figure(&figures, new_figure((char)0, shape));
+	add_figure(&figures, new_figure((char)0, q, shape));
 	free(shape);
 	return (figures);
+}
+
+void	print_map(t_cell *c_map, char side)
+{
+	int			i;
+
+	i = 0;
+	while (i < side * side)
+	{
+		if (i != 0 && i % side == 0)
+			ft_putchar('\n');
+		ft_putchar(c_map[i].ind);
+		i++;
+	}
+	ft_putchar('\n');
+}
+
+t_cell		*map_init(char side)
+{
+	t_cell		*c_map;
+	int			i;
+
+	i = 0;
+	MALL_CHECK(c_map = (t_cell *)malloc(sizeof(t_cell) * side * side));
+	while (i < side * side)
+	{
+		c_map[i].x = i / side;
+		c_map[i].y = i % side;
+		c_map[i].ind = '.';
+		c_map[i].side = side;
+		i++;
+	}
+	return (c_map);
 }
