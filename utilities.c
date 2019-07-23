@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utilities.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: plettie <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/23 11:37:53 by plettie           #+#    #+#             */
-/*   Updated: 2019/07/23 11:37:55 by plettie          ###   ########.fr       */
+/*   Updated: 2019/07/23 15:59:24 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,23 @@ int				ft_urod(char *c)
 	if (k != 12)
 		return (0);
 	return (1);
+}
+
+void			cleaner(t_tetris **figures, t_cell **map, char **input)
+{
+	t_tetris	*figs;
+	t_tetris	*buff;
+
+	ft_strdel(input);
+	free(*map);
+	*map = NULL;
+	figs = *figures;
+	buff = figs;
+	while (figs)
+	{
+		free(figs->shape);
+		buff = figs->next;
+		free(figs);
+		figs = buff;
+	}
 }

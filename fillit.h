@@ -6,7 +6,7 @@
 /*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/06 14:47:43 by caellis           #+#    #+#             */
-/*   Updated: 2019/07/23 15:22:03 by caellis          ###   ########.fr       */
+/*   Updated: 2019/07/23 16:22:22 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,9 @@ typedef struct		s_cell
 # define MALL_CHECK(x) if (!(x)) return (NULL)
 # define ERR_ZERO(x) if (!(x)) return (0)
 
-t_tetris			*map_2_figures(char const *map, t_tetris *figures, char q);
 char				is_valid(int fd);
 t_cell				*solve_it(t_tetris *figures, char side);
-void				print_map(t_cell *c_map, char side);
-void				cleaner(t_tetris **figures, t_cell **map, char **input);
+
 #endif
 
 #ifndef FIGURES_FUNCTIONS_H
@@ -64,11 +62,13 @@ t_point				*set_shape(t_point **shape);
 
 char				ez_sqrt(int x);
 int					ft_urod(char *c);
+void				cleaner(t_tetris **figures, t_cell **map, char **input);
 #endif
 
 #ifndef MAP_FUNCTIONS_H
 # define MAP_FUNCTIONS_H
 
+t_tetris			*map_2_figures(char const *map, t_tetris *figures, char q);
 void				print_map(t_cell *c_map, char side);
 t_cell				*map_init(char side);
 #endif

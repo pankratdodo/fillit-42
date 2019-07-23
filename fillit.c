@@ -6,7 +6,7 @@
 /*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/06 13:09:49 by caellis           #+#    #+#             */
-/*   Updated: 2019/07/23 15:25:29 by caellis          ###   ########.fr       */
+/*   Updated: 2019/07/23 16:40:23 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int				main(int ac, char **av)
 		ERR_ZERO(figures = map_2_figures(input, figures, q));
 		map = solve_it(figures, ez_sqrt(4 * q));
 		print_map(map, map->side);
-		//cleaner(&figures, &map, &input);
+		cleaner(&figures, &map, &input);
 	}
 	else
 		ft_putstr("error\n");
