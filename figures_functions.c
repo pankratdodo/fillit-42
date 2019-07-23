@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   figures_functions.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/10 19:02:51 by caellis           #+#    #+#             */
-/*   Updated: 2019/07/23 11:29:56 by plettie          ###   ########.fr       */
+/*   Updated: 2019/07/23 15:17:00 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-t_point			*copy_shape(t_point *shape)
+static t_point	*copy_shape(t_point *shape)
 {
 	t_point		*copy;
 	int			p_num;

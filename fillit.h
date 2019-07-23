@@ -6,7 +6,7 @@
 /*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/06 14:47:43 by caellis           #+#    #+#             */
-/*   Updated: 2019/07/23 11:32:46 by plettie          ###   ########.fr       */
+/*   Updated: 2019/07/23 15:22:03 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,24 @@ typedef struct		s_cell
 t_tetris			*map_2_figures(char const *map, t_tetris *figures, char q);
 char				is_valid(int fd);
 t_cell				*solve_it(t_tetris *figures, char side);
+void				print_map(t_cell *c_map, char side);
+void				cleaner(t_tetris **figures, t_cell **map, char **input);
+#endif
 
+#ifndef FIGURES_FUNCTIONS_H
+# define FIGURES_FUNCTIONS_H
+
+t_tetris			*new_figure(char i, char number, t_point *shape);
+void				add_figure(t_tetris **figs, t_tetris *new);
+void				abs_point_2_shape(t_point **shape, int p_num, int x, int y);
+t_point				*set_shape(t_point **shape);
+#endif
+
+#ifndef UTILITIES_H
+# define UTILITIES_H
+
+char				ez_sqrt(int x);
+int					ft_urod(char *c);
 #endif
 
 #ifndef MAP_FUNCTIONS_H
@@ -54,27 +71,4 @@ t_cell				*solve_it(t_tetris *figures, char side);
 
 void				print_map(t_cell *c_map, char side);
 t_cell				*map_init(char side);
-#endif
-
-#ifndef SOLVE_IT_H
-# define SOLVE_IT_H
-
-t_cell				*map_init(char size);
-void				print_map(t_cell *c_map, char side);
-#endif
-
-#ifndef IS_VALID_H
-# define IS_VALID_H
-
-#endif
-
-#ifndef TETRIS_FUN_H
-# define TETRIS_FUN_H
-
-t_tetris			*new_figure(char i, char number, t_point *shape);
-void				add_figure(t_tetris **figs, t_tetris *new);
-void				abs_point_2_shape(t_point **shape, int p_num, int x, int y);
-t_point				*set_shape(t_point **shape);
-char				ez_sqrt(int x);
-int					ft_urod(char *c);
 #endif

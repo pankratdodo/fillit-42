@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   solve_it.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/26 17:41:22 by caellis           #+#    #+#             */
-/*   Updated: 2019/07/23 11:28:38 by plettie          ###   ########.fr       */
+/*   Updated: 2019/07/23 15:19:19 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int				*can_insert(t_cell *map, t_tetris *fig, int *pos_fill, int pos)
+static int		*can_insert(t_cell *map, t_tetris *fig, int *pos_fill, int pos)
 {
 	int			i;
 	int			x_ctl;
@@ -41,7 +41,7 @@ int				*can_insert(t_cell *map, t_tetris *fig, int *pos_fill, int pos)
 	return (pos_fill);
 }
 
-void			insert_figure(t_cell *map, t_tetris *fig, int *pos_to_fill)
+static void		insert_figure(t_cell *map, t_tetris *fig, int *pos_to_fill)
 {
 	int			i;
 
@@ -53,7 +53,7 @@ void			insert_figure(t_cell *map, t_tetris *fig, int *pos_to_fill)
 	}
 }
 
-void			clean_figure(t_cell *map, int *pos_to_fill)
+static void		clean_figure(t_cell *map, int *pos_to_fill)
 {
 	int			i;
 
@@ -65,7 +65,7 @@ void			clean_figure(t_cell *map, int *pos_to_fill)
 	}
 }
 
-int				cracker(t_cell *map, t_tetris *figures)
+static int		cracker(t_cell *map, t_tetris *figures)
 {
 	int			pos;
 	int			*points;
