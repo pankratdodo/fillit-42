@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fillit.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/06 13:09:49 by caellis           #+#    #+#             */
-/*   Updated: 2019/07/23 11:15:52 by plettie          ###   ########.fr       */
+/*   Updated: 2019/07/23 15:04:29 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@ int				main(int ac, char **av)
 	t_tetris	*figures;
 	t_cell		*map;
 
-	if (ac != 2)
+	figures = NULL;
+	if (ac != 2 || (fd = open(av[1], O_RDONLY)) <= 0)
 	{
-		write(1, "usage", 5);
+		ft_putstr_fd("usage: fillit file_with_map\n", 2);
 		return (0);
 	}
-	fd = open(av[1], O_RDONLY);
-	if ((q = is_valid(fd)))
+	if (ac == 2 && (q = is_valid(fd)))
 	{
 		close(fd);
 		read(open(av[1], O_RDONLY), (input = malloc(547)), 547);

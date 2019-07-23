@@ -6,7 +6,7 @@
 #    By: caellis <caellis@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/08 14:04:08 by caellis           #+#    #+#              #
-#    Updated: 2019/07/23 12:37:28 by plettie          ###   ########.fr        #
+#    Updated: 2019/07/23 14:39:00 by caellis          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ CC := gcc
 
 NAME := fillit
 
-#FLAGS := -Wall -Wextra -Werror
+FLAGS := -Wall -Wextra -Werror
 
 LIB := ./libft/libft.a
 
@@ -30,7 +30,7 @@ $(LIB):
 	@make -C libft
 
 $(NAME): $(OBJECTS) $(LIB)
-	@$(CC) $(OBJECTS) $(LIB) -o $(NAME)
+	@$(CC) $(FLAGS) $(OBJECTS) $(LIB) -o $(NAME)
 
 clean :
 	@rm -rf $(OBJECTS)
