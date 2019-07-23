@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: caellis <caellis@student.42.fr>            +#+  +:+       +#+         #
+#    By: caellis <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/08 14:04:08 by caellis           #+#    #+#              #
-#    Updated: 2019/07/23 16:53:48 by caellis          ###   ########.fr        #
+#    Updated: 2019/07/23 18:20:39 by caellis          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,10 +34,8 @@ $(NAME): $(OBJECTS) $(LIB)
 
 clean :
 	@rm -rf $(OBJECTS)
-	@make -C libft clean
 
 fclean : clean
 	@rm -rf $(NAME)
-	@make -C libft fclean
 
 re : fclean all
