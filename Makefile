@@ -6,7 +6,7 @@
 #    By: caellis <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/08 14:04:08 by caellis           #+#    #+#              #
-#    Updated: 2019/07/23 18:20:39 by caellis          ###   ########.fr        #
+#    Updated: 2019/07/23 18:34:41 by caellis          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,8 @@ $(OBJECTS): %.o : %.c
 	@$(CC) $(FLAGS) -c $(SOURCE)
 
 $(LIB):
-	@make -C libft
+	@make -C libft/
+	@make -C libft/ clean
 
 $(NAME): $(OBJECTS) $(LIB)
 	@$(CC) $(FLAGS) $(OBJECTS) $(LIB) -o $(NAME)
