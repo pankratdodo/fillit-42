@@ -6,22 +6,16 @@
 /*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/10 19:02:51 by caellis           #+#    #+#             */
-/*   Updated: 2019/07/23 02:03:36 by caellis          ###   ########.fr       */
+/*   Updated: 2019/07/23 11:29:56 by plettie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/* 
-* We could collect functions for t_tetris type here
-* e.g. iter_figures, pop_figure, delete_figure,
-* clear_figures, map_figures etc
-*/
-
 #include "fillit.h"
 
-t_point		*copy_shape(t_point *shape)
+t_point			*copy_shape(t_point *shape)
 {
-	t_point	*copy;
-	int		p_num;
+	t_point		*copy;
+	int			p_num;
 
 	p_num = 0;
 	MALL_CHECK(copy = (t_point *)malloc(sizeof(t_point) * 4));
@@ -37,7 +31,7 @@ t_point		*copy_shape(t_point *shape)
 	return (copy);
 }
 
-t_tetris	*new_figure(char i, char number, t_point *shape)
+t_tetris		*new_figure(char i, char number, t_point *shape)
 {
 	t_tetris	*fig;
 
@@ -49,7 +43,7 @@ t_tetris	*new_figure(char i, char number, t_point *shape)
 	return (fig);
 }
 
-void		add_figure(t_tetris **figs, t_tetris *new)
+void			add_figure(t_tetris **figs, t_tetris *new)
 {
 	t_tetris	*buff;
 
@@ -64,7 +58,7 @@ void		add_figure(t_tetris **figs, t_tetris *new)
 	}
 }
 
-void		abs_point_2_shape(t_point **shape, int p_num, int x, int y)
+void			abs_point_2_shape(t_point **shape, int p_num, int x, int y)
 {
 	if (shape && *shape)
 	{
@@ -73,11 +67,11 @@ void		abs_point_2_shape(t_point **shape, int p_num, int x, int y)
 	}
 }
 
-t_point		*set_shape(t_point **shape)
+t_point			*set_shape(t_point **shape)
 {
-	int		x_base;
-	int		y_base;
-	int		p_num;
+	int			x_base;
+	int			y_base;
+	int			p_num;
 
 	p_num = 0;
 	if (shape && *shape)
@@ -91,27 +85,5 @@ t_point		*set_shape(t_point **shape)
 			p_num++;
 		}
 	}
-	/* printf("1st point is: '%i, %i'\n"\
-			"2nd point is: '%i, %i'\n"\
-			"3rd point is: '%i, %i'\n"\
-			"4th point is: '%i, %i'\n\n", \
-				(*shape)[0].x, (*shape)[0].y, \
-				(*shape)[1].x, (*shape)[1].y, \
-				(*shape)[2].x, (*shape)[2].y, \
-				(*shape)[3].x, (*shape)[3].y); */
 	return (*shape);
-}
-
-
-char			ez_sqrt(int x)
-{
-	int		sqrt;
-
-	sqrt = 1;
-	if (x == 2)
-		return (1);
-	while (sqrt * sqrt <= x)
-		sqrt++;
-	sqrt--;
-	return ((char)sqrt);
 }

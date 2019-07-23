@@ -53,24 +53,6 @@ static int		is_sosed(char *c)
 	return (nei);
 }
 
-static int		ft_urod(char *c)
-{
-	int			k;
-	int			i;
-
-	k = 0;
-	i = 0;
-	while (c[i])
-	{
-		if (c[i] == '.')
-			k++;
-		i++;
-	}
-	if (k != 12)
-		return (0);
-	return (1);
-}
-
 static int		is_help(char *c)
 {
 	int			count;

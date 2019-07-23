@@ -6,40 +6,37 @@
 /*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/06 13:09:49 by caellis           #+#    #+#             */
-/*   Updated: 2019/07/22 17:07:57 by caellis          ###   ########.fr       */
+/*   Updated: 2019/07/23 11:15:52 by plettie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int         main(int ac, char **av)
+int				main(int ac, char **av)
 {
-    int 		fd;
-    char        error;
-    char        q;
-    char        *input;
+	int			fd;
+	char		q;
+	char		*input;
 	t_tetris	*figures;
 	t_cell		*map;
 
-    if (ac != 2)
-    {
-        write(1, "usage", 5);
-        return (0);
-    }
-    fd = open(av[1], O_RDONLY);
-    if ((q = is_valid(fd)))
-    {
+	if (ac != 2)
+	{
+		write(1, "usage", 5);
+		return (0);
+	}
+	fd = open(av[1], O_RDONLY);
+	if ((q = is_valid(fd)))
+	{
 		close(fd);
-        read(open(av[1], O_RDONLY), (input = malloc(547)), 547);
-        ERR_ZERO(figures = map_2_figures(input, figures, q));
+		read(open(av[1], O_RDONLY), (input = malloc(547)), 547);
+		ERR_ZERO(figures = map_2_figures(input, figures, q));
 		map = solve_it(figures, ez_sqrt(4 * q));
-        print_map(map, map->side);
-        ft_strdel(&input);          //чисти input
-        //  ft_tetris_delete(&figures); //чисти figures
-        //  ft_mapdelete(&map);
+		print_map(map, map->side);
+		ft_strdel(&input);
 	}
 	else
-        ft_putstr("error\n");
-    close(fd);
-    return (0);
+		ft_putstr("error\n");
+	close(fd);
+	return (0);
 }

@@ -6,13 +6,13 @@
 /*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/26 17:41:22 by caellis           #+#    #+#             */
-/*   Updated: 2019/07/23 02:17:30 by caellis          ###   ########.fr       */
+/*   Updated: 2019/07/23 11:28:38 by plettie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-int		*can_insert(t_cell *map, t_tetris *fig, int *pos_to_fill, int pos)
+int				*can_insert(t_cell *map, t_tetris *fig, int *pos_fill, int pos)
 {
 	int			i;
 	int			x_ctl;
@@ -22,27 +22,26 @@ int		*can_insert(t_cell *map, t_tetris *fig, int *pos_to_fill, int pos)
 
 	i = 0;
 	side = map->side;
-	if (pos >= side * side) // условие выхода из рекурсии
+	if (pos >= side * side)
 		return (NULL);
-	if (!pos_to_fill)
-		pos_to_fill = (int *)malloc(sizeof(int) * 4);
-	while (i < 4)
+	if (!pos_fill)
+		pos_fill = (int *)malloc(sizeof(int) * 4);
+	while (i++ < 4)
 	{
 		x_ctl = map[pos].x + fig->shape[i].x;
 		y_ctl = map[pos].y + fig->shape[i].y;
 		cur_pos = pos + fig->shape[i].x * side + fig->shape[i].y;
-		if (x_ctl < 0 || x_ctl >= side || y_ctl < 0 || y_ctl >= side)	// выходит за пределы карты (О - здесь можно также делать проверку "может ли вообще поместиться"
-			return (can_insert(map, fig, pos_to_fill, ++pos));	// было return(0) - стало + рекурсивный вызов от следующей позиции;
+		if (x_ctl < 0 || x_ctl >= side || y_ctl < 0 || y_ctl >= side)
+			return (can_insert(map, fig, pos_fill, ++pos));
 		else if (map[cur_pos].ind != '.')
-			return (can_insert(map, fig, pos_to_fill, ++pos));	// уже стоит фигура был  return(0) -> может быть попробовать рекурсивный вызов от следующей позиции?
+			return (can_insert(map, fig, pos_fill, ++pos));
 		else
-			pos_to_fill[i] = cur_pos;
-		i++;
+			pos_fill[i] = cur_pos;
 	}
-	return (pos_to_fill);
+	return (pos_fill);
 }
 
-void	insert_figure(t_cell *map, t_tetris *fig, int *pos_to_fill)
+void			insert_figure(t_cell *map, t_tetris *fig, int *pos_to_fill)
 {
 	int			i;
 
@@ -54,7 +53,7 @@ void	insert_figure(t_cell *map, t_tetris *fig, int *pos_to_fill)
 	}
 }
 
-void	clean_figure(t_cell *map, int *pos_to_fill)
+void			clean_figure(t_cell *map, int *pos_to_fill)
 {
 	int			i;
 
@@ -66,10 +65,10 @@ void	clean_figure(t_cell *map, int *pos_to_fill)
 	}
 }
 
-int		cracker(t_cell *map, t_tetris *figures)
+int				cracker(t_cell *map, t_tetris *figures)
 {
-	int		pos;
-	int		*points;
+	int			pos;
+	int			*points;
 
 	pos = 0;
 	if (figures->index == 0)
@@ -85,7 +84,7 @@ int		cracker(t_cell *map, t_tetris *figures)
 	return (0);
 }
 
-t_cell	*solve_it(t_tetris *figures, char side)
+t_cell			*solve_it(t_tetris *figures, char side)
 {
 	t_cell		*map;
 	int			pos;

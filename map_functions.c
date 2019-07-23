@@ -6,13 +6,13 @@
 /*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/06 15:08:15 by caellis           #+#    #+#             */
-/*   Updated: 2019/07/22 15:49:36 by caellis          ###   ########.fr       */
+/*   Updated: 2019/07/23 11:22:59 by plettie          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-t_tetris    *map_2_figures(char const *map, t_tetris *figures, char q)
+t_tetris		*map_2_figures(char const *map, t_tetris *figures, char q)
 {
 	char		*s_fig;
 	char		index;
@@ -24,14 +24,11 @@ t_tetris    *map_2_figures(char const *map, t_tetris *figures, char q)
 	MALL_CHECK(shape = (t_point *)malloc(sizeof(t_point) * 4));
 	while (index < 'A' + q)
 	{
-		i = 0;
+		i = -1;
 		p_num = 0;
-		while (i < 21)
-		{
+		while (++i < 21)
 			if (map[i] == '#')
 				abs_point_2_shape(&shape, p_num++, i / 5, i % 5);
-			i++;
-		}
 		shape = set_shape(&shape);
 		add_figure(&figures, new_figure(index, q, shape));
 		index++;
@@ -42,7 +39,7 @@ t_tetris    *map_2_figures(char const *map, t_tetris *figures, char q)
 	return (figures);
 }
 
-void	print_map(t_cell *c_map, char side)
+void			print_map(t_cell *c_map, char side)
 {
 	int			i;
 
@@ -57,7 +54,7 @@ void	print_map(t_cell *c_map, char side)
 	ft_putchar('\n');
 }
 
-t_cell		*map_init(char side)
+t_cell			*map_init(char side)
 {
 	t_cell		*c_map;
 	int			i;
