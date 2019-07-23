@@ -3,6 +3,7 @@
 *.[ao]
 *.out
 *.ipch
+*.gch
 *.template
 filit_pub.code-workspace
 fillit
