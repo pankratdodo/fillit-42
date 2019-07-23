@@ -20,13 +20,13 @@ int				*can_insert(t_cell *map, t_tetris *fig, int *pos_fill, int pos)
 	int			cur_pos;
 	char		side;
 
-	i = 0;
+	i = -1;
 	side = map->side;
 	if (pos >= side * side)
 		return (NULL);
 	if (!pos_fill)
 		pos_fill = (int *)malloc(sizeof(int) * 4);
-	while (i++ < 4)
+	while (++i < 4)
 	{
 		x_ctl = map[pos].x + fig->shape[i].x;
 		y_ctl = map[pos].y + fig->shape[i].y;
