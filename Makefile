@@ -6,7 +6,7 @@
 #    By: caellis <caellis@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/08 14:04:08 by caellis           #+#    #+#              #
-#    Updated: 2019/06/21 14:48:26 by caellis          ###   ########.fr        #
+#    Updated: 2019/07/23 12:37:28 by plettie          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,8 +16,7 @@ NAME := fillit
 
 #FLAGS := -Wall -Wextra -Werror
 
-INCLUDE := .
-LIB := -L libft/ -lft
+LIB := ./libft/libft.a
 
 SOURCE := $(wildcard *.c)
 OBJECTS := $(patsubst %.c,%.o,$(SOURCE))
@@ -25,16 +24,21 @@ HEADERS = $(wildcard *.h)
 
 all: $(NAME)
 
-$(NAME): $(OBJECTS)
-	@$(CC) $(FLAGS) -g -o $@ $^ $(LIB)
+$(OBJECTS): %.o : %.c
+	@$(CC) $(FLAGS) -c $(SOURCE) -I -o $(HEADERS)
 
-%.o : %.c $(HEADERS)
-	@$(CC) $(FLAGS) -g -c $(SOURCE) -I$(INCLUDE) 
+$(LIB):
+	@make -C libft
+
+$(NAME): $(OBJECTS) $(LIB)
+	@$(CC) $(OBJECTS) $(LIB) -o $(NAME)
 
 clean :
 	@rm -rf $(OBJECTS)
+	@make -C libft clean
 
 fclean : clean
 	@rm -rf $(NAME)
+	@make -C libft fclean
 
 re : fclean all
