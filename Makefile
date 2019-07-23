@@ -20,12 +20,11 @@ LIB := ./libft/libft.a
 
 SOURCE := $(wildcard *.c)
 OBJECTS := $(patsubst %.c,%.o,$(SOURCE))
-HEADERS = $(wildcard *.h)
 
 all: $(NAME)
 
 $(OBJECTS): %.o : %.c
-	@$(CC) $(FLAGS) -c $(SOURCE) -I -o $(HEADERS)
+	@$(CC) $(FLAGS) -c $(SOURCE)
 
 $(LIB):
 	@make -C libft
