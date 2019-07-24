@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: caellis <marvin@42.fr>                     +#+  +:+       +#+         #
+#    By: caellis <caellis@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/08 14:04:08 by caellis           #+#    #+#              #
-#    Updated: 2019/07/23 22:13:58 by caellis          ###   ########.fr        #
+#    Updated: 2019/07/24 14:23:06 by caellis          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ CC := gcc
 
 NAME := fillit
 
-FLAGS := -Wall -Wextra -Werror
+FLAGS := -Wall -Wextra -Werror -g
 
 LIB := ./libft/libft.a
 

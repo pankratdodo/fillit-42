@@ -6,7 +6,7 @@
 /*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/27 17:07:11 by plettie           #+#    #+#             */
-/*   Updated: 2019/07/19 12:24:46 by plettie          ###   ########.fr       */
+/*   Updated: 2019/07/24 15:35:59 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,5 +104,6 @@ char			is_valid(int fd)
 	}
 	if (kol == -1 || kol == 21 || time > 26 || flag == 0)
 		return (on_error(&head));
+	free(head);
 	return (time);
 }
